@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | Elite Document Suite</title>
+  <meta name="description" content="Terms and Conditions for Elite Document Suite. Read the terms governing the use of our free online document tools.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jovial-pudding-aba321.netlify.app/terms.html">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Terms &amp; Conditions | Elite Document Suite">
+  <meta property="og:description" content="Terms and conditions governing the use of Elite Document Suite's free online tools.">
+  <meta property="og:url" content="https://jovial-pudding-aba321.netlify.app/terms.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    [data-theme="dark"] {
+      --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-tertiary: #334155;
+      --bg-glass: rgba(30,41,59,0.8); --text-primary: #f1f5f9; --text-secondary: #94a3b8;
+      --text-muted: #64748b; --border: #334155; --accent: #6366f1; --accent-hover: #818cf8;
+    }
+    [data-theme="light"] {
+      --bg-primary: #f8fafc; --bg-secondary: #ffffff; --bg-tertiary: #e2e8f0;
+      --bg-glass: rgba(255,255,255,0.85); --text-primary: #0f172a; --text-secondary: #475569;
+      --text-muted: #94a3b8; --border: #e2e8f0; --accent: #4f46e5; --accent-hover: #6366f1;
+    }
+    [data-theme="ocean"] {
+      --bg-primary: #0a1628; --bg-secondary: #112240; --bg-tertiary: #1d3461;
+      --bg-glass: rgba(17,34,64,0.85); --text-primary: #ccd6f6; --text-secondary: #8892b0;
+      --text-muted: #5a6a8a; --border: #1d3461; --accent: #64ffda; --accent-hover: #8affea;
+    }
+    [data-theme="forest"] {
+      --bg-primary: #0d1a0d; --bg-secondary: #162816; --bg-tertiary: #234023;
+      --bg-glass: rgba(22,40,22,0.85); --text-primary: #d4edda; --text-secondary: #8fbc8f;
+      --text-muted: #5a8a5a; --border: #234023; --accent: #4ade80; --accent-hover: #6ee7a0;
+    }
+    [data-theme="sunset"] {
+      --bg-primary: #1a0f0a; --bg-secondary: #2d1810; --bg-tertiary: #4a2517;
+      --bg-glass: rgba(45,24,16,0.85); --text-primary: #fff0e0; --text-secondary: #d4a574;
+      --text-muted: #8a6a4a; --border: #4a2517; --accent: #f97316; --accent-hover: #fb923c;
+    }
+    [data-theme="royal"] {
+      --bg-primary: #13051e; --bg-secondary: #1f0a35; --bg-tertiary: #36185a;
+      --bg-glass: rgba(31,10,53,0.85); --text-primary: #f0e6ff; --text-secondary: #b794d6;
+      --text-muted: #7a5a9a; --border: #36185a; --accent: #a855f7; --accent-hover: #c084fc;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary); color: var(--text-primary);
+      line-height: 1.6; transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg-glass); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); transition: background 0.4s ease;
+    }
+    .nav-brand {
+      font-size: 1.2rem; font-weight: 700; text-decoration: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary); transition: all 0.2s ease; -webkit-text-fill-color: initial;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); background: var(--bg-tertiary); }
+
+    .theme-btn {
+      padding: 8px 14px; border-radius: 8px; background: var(--bg-tertiary);
+      border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer;
+      font-size: 0.85rem; font-weight: 500; font-family: inherit;
+      display: flex; align-items: center; gap: 6px; position: relative; transition: all 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-dropdown {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 12px; padding: 8px; min-width: 180px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease;
+    }
+    .theme-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .theme-option {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      border-radius: 8px; cursor: pointer; font-size: 0.85rem; color: var(--text-secondary);
+      border: none; background: none; width: 100%; text-align: left; font-family: inherit; transition: all 0.15s;
+    }
+    .theme-option:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+    .theme-option.active { color: var(--accent); font-weight: 600; }
+    .theme-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-primary); padding: 8px; }
+    .nav-toggle svg { width: 24px; height: 24px; }
+
+    .content { max-width: 800px; margin: 0 auto; padding: 120px 24px 80px; }
+    .content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 8px; }
+    .content .updated { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 40px; }
+    .content h2 { font-size: 1.3rem; font-weight: 600; margin: 32px 0 12px; color: var(--text-primary); }
+    .content p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.8; }
+    .content ul { margin: 0 0 16px 24px; color: var(--text-secondary); }
+    .content ul li { margin-bottom: 8px; line-height: 1.7; }
+    .content strong { color: var(--text-primary); }
+
+    .footer {
+      border-top: 1px solid var(--border); padding: 40px 24px;
+      text-align: center; color: var(--text-muted);
+    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: fixed; top: 64px; left: 0; right: 0;
+        background: var(--bg-secondary); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 16px; gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .content { padding: 100px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Elite Document Suite</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html" class="active">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="position:relative;">
+        <button class="theme-btn" id="themeBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Theme
+          <div class="theme-dropdown" id="themeDropdown">
+            <button class="theme-option active" data-theme="dark"><span class="theme-dot" style="background:#0f172a;"></span> Dark</button>
+            <button class="theme-option" data-theme="light"><span class="theme-dot" style="background:#f8fafc;border-color:#cbd5e1;"></span> Light</button>
+            <button class="theme-option" data-theme="ocean"><span class="theme-dot" style="background:#0a1628;"></span> Ocean</button>
+            <button class="theme-option" data-theme="forest"><span class="theme-dot" style="background:#0d1a0d;"></span> Forest</button>
+            <button class="theme-option" data-theme="sunset"><span class="theme-dot" style="background:#1a0f0a;"></span> Sunset</button>
+            <button class="theme-option" data-theme="royal"><span class="theme-dot" style="background:#13051e;"></span> Royal Purple</button>
+          </div>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Terms &amp; Conditions</h1>
+    <p class="updated">Last updated: February 22, 2026</p>
+
+    <p>Welcome to <strong>Elite Document Suite</strong>. By accessing or using this website and its tools, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use this website.</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By using Elite Document Suite ("the Service"), you confirm that you have read, understood, and agree to these Terms and Conditions. These terms apply to all visitors and users of the website.</p>
+
+    <h2>2. Description of Service</h2>
+    <p>Elite Document Suite provides free, browser-based online tools for PDF editing, image processing, text utilities, and business documents. All processing happens locally in your web browser. No files are uploaded to any server.</p>
+
+    <h2>3. Free Use</h2>
+    <p>All tools provided on this website are <strong>free of charge</strong>. There are no premium tiers, subscriptions, or hidden fees. You may use the tools for personal, educational, or commercial purposes.</p>
+
+    <h2>4. No Account Required</h2>
+    <p>You are not required to create an account, provide an email address, or register in any way to use the tools. The service is available immediately upon visiting the website.</p>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All content on this website, including but not limited to text, design, code, graphics, and branding, is the intellectual property of <strong>Muhammad Hussain Shakir</strong> and is protected under applicable copyright laws. You may not copy, reproduce, distribute, or create derivative works from this content without prior written permission.</p>
+
+    <h2>6. User Responsibilities</h2>
+    <p>When using Elite Document Suite, you agree to:</p>
+    <ul>
+      <li>Use the tools only for lawful purposes.</li>
+      <li>Not attempt to exploit, hack, or disrupt the website or its services.</li>
+      <li>Not use any automated systems (bots, scrapers) to access the website in a manner that could damage or overload it.</li>
+      <li>Take responsibility for any files you process using the tools.</li>
+    </ul>
+
+    <h2>7. Disclaimer of Warranties</h2>
+    <p>Elite Document Suite is provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis. We make no warranties, express or implied, regarding the accuracy, reliability, or availability of the tools. While we strive to provide high-quality tools, we cannot guarantee that the tools will meet your specific requirements or produce error-free results.</p>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>In no event shall Elite Document Suite or its creator, Muhammad Hussain Shakir, be liable for any direct, indirect, incidental, special, or consequential damages arising from the use of or inability to use the website or its tools. This includes, but is not limited to, loss of data, loss of profits, or any other intangible losses.</p>
+
+    <h2>9. Third-Party Libraries</h2>
+    <p>Our tools use open-source third-party JavaScript libraries (such as pdf-lib, PDF.js, and others) loaded from CDN providers. These libraries are governed by their own respective licenses. We are not responsible for any issues arising from these third-party libraries.</p>
+
+    <h2>10. External Links</h2>
+    <p>This website may contain links to external websites or resources. We are not responsible for the content, accuracy, or practices of any third-party websites. Accessing external links is at your own risk.</p>
+
+    <h2>11. Changes to Terms</h2>
+    <p>We reserve the right to modify or update these Terms and Conditions at any time without prior notice. Changes will be effective immediately upon posting on this page. The "Last updated" date at the top will be revised accordingly. Continued use of the website after any changes constitutes acceptance of the new terms.</p>
+
+    <h2>12. Governing Law</h2>
+    <p>These Terms and Conditions are governed by and construed in accordance with applicable laws. Any disputes arising from these terms shall be resolved through appropriate legal channels.</p>
+
+    <h2>13. Contact</h2>
+    <p>If you have any questions about these Terms and Conditions, please contact us through the <a href="contact.html">Contact page</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Elite Document Suite by Muhammad Hussain Shakir. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Theme
+    const saved = localStorage.getItem('eds-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    const themeBtn = document.getElementById('themeBtn');
+    const dd = document.getElementById('themeDropdown');
+    const opts = dd.querySelectorAll('.theme-option');
+    opts.forEach(o => o.classList.toggle('active', o.dataset.theme === saved));
+    themeBtn.addEventListener('click', e => { e.stopPropagation(); dd.classList.toggle('open'); });
+    opts.forEach(o => o.addEventListener('click', e => {
+      e.stopPropagation();
+      document.documentElement.setAttribute('data-theme', o.dataset.theme);
+      localStorage.setItem('eds-theme', o.dataset.theme);
+      opts.forEach(x => x.classList.remove('active')); o.classList.add('active');
+      dd.classList.remove('open');
+    }));
+    document.addEventListener('click', () => dd.classList.remove('open'));
+    // Mobile nav
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    // Register service worker
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+  </script>
+</body>
+</html>

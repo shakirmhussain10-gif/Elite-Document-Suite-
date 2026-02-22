@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Document Suite | 50+ Free Online PDF, Image & Text Tools</title>
+  <meta name="description" content="Free online tools for PDF editing, image processing, text utilities, and business documents. 100% private - all processing happens in your browser. No uploads, no sign-up needed.">
+  <meta name="keywords" content="online PDF tools, image converter, text tools, business tools, free online tools, PDF merge, PDF compress, image resize, QR code generator, invoice generator, resume builder, password generator, OCR">
+  <meta name="author" content="Muhammad Hussain Shakir">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://jovial-pudding-aba321.netlify.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Elite Document Suite | 50+ Free Online Tools">
+  <meta property="og:description" content="Free online tools for PDF, Image, Text & Business documents. 100% private browser-based processing. No uploads needed.">
+  <meta property="og:url" content="https://jovial-pudding-aba321.netlify.app/">
+  <meta property="og:site_name" content="Elite Document Suite">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elite Document Suite | 50+ Free Online Tools">
+  <meta name="twitter:description" content="Free online tools for PDF, Image, Text & Business. 100% private browser processing.">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Elite Document Suite",
+    "url": "https://jovial-pudding-aba321.netlify.app/",
+    "description": "50+ free online tools for PDF editing, image processing, text utilities, and business documents. All processing happens in your browser.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Muhammad Hussain Shakir"
+    },
+    "featureList": "PDF Merge, PDF Split, PDF Compress, Image Resize, Image Compress, OCR, QR Code Generator, Invoice Generator, Resume Builder, Password Generator"
+  }
+  </script>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== THEME SYSTEM ===== */
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --bg-glass: rgba(30, 41, 59, 0.8);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: #334155;
+      --border-hover: #475569;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.4);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%);
+      --card-hover-bg: #253349;
+    }
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #e2e8f0;
+      --bg-glass: rgba(255,255,255,0.85);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --accent: #4f46e5;
+      --accent-hover: #6366f1;
+      --accent-glow: rgba(79, 70, 229, 0.2);
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.08) 0%, transparent 60%);
+      --card-hover-bg: #f1f5f9;
+    }
+    [data-theme="ocean"] {
+      --bg-primary: #0a1628;
+      --bg-secondary: #112240;
+      --bg-tertiary: #1d3461;
+      --bg-glass: rgba(17, 34, 64, 0.85);
+      --text-primary: #ccd6f6;
+      --text-secondary: #8892b0;
+      --text-muted: #5a6a8a;
+      --border: #1d3461;
+      --border-hover: #2a4a7f;
+      --accent: #64ffda;
+      --accent-hover: #8affea;
+      --accent-glow: rgba(100, 255, 218, 0.2);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(100,255,218,0.08) 0%, transparent 60%);
+      --card-hover-bg: #1a3355;
+    }
+    [data-theme="forest"] {
+      --bg-primary: #0d1a0d;
+      --bg-secondary: #162816;
+      --bg-tertiary: #234023;
+      --bg-glass: rgba(22, 40, 22, 0.85);
+      --text-primary: #d4edda;
+      --text-secondary: #8fbc8f;
+      --text-muted: #5a8a5a;
+      --border: #234023;
+      --border-hover: #2d5a2d;
+      --accent: #4ade80;
+      --accent-hover: #6ee7a0;
+      --accent-glow: rgba(74, 222, 128, 0.2);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.08) 0%, transparent 60%);
+      --card-hover-bg: #1e351e;
+    }
+    [data-theme="sunset"] {
+      --bg-primary: #1a0f0a;
+      --bg-secondary: #2d1810;
+      --bg-tertiary: #4a2517;
+      --bg-glass: rgba(45, 24, 16, 0.85);
+      --text-primary: #fff0e0;
+      --text-secondary: #d4a574;
+      --text-muted: #8a6a4a;
+      --border: #4a2517;
+      --border-hover: #6a3520;
+      --accent: #f97316;
+      --accent-hover: #fb923c;
+      --accent-glow: rgba(249, 115, 22, 0.25);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.1) 0%, transparent 60%);
+      --card-hover-bg: #3a1e12;
+    }
+    [data-theme="royal"] {
+      --bg-primary: #13051e;
+      --bg-secondary: #1f0a35;
+      --bg-tertiary: #36185a;
+      --bg-glass: rgba(31, 10, 53, 0.85);
+      --text-primary: #f0e6ff;
+      --text-secondary: #b794d6;
+      --text-muted: #7a5a9a;
+      --border: #36185a;
+      --border-hover: #4a2575;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --hero-gradient: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.1) 0%, transparent 60%);
+      --card-hover-bg: #2a1045;
+    }
+
+    /* ===== BASE RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 24px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.4s ease;
+    }
+    .nav-brand {
+      font-size: 1.2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
+      color: var(--text-secondary); transition: all 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-primary); background: var(--bg-tertiary); }
+
+    /* Theme Switcher */
+    .theme-btn {
+      position: relative; padding: 8px 14px; border-radius: 8px;
+      background: var(--bg-tertiary); border: 1px solid var(--border);
+      color: var(--text-secondary); cursor: pointer; font-size: 0.85rem; font-weight: 500;
+      font-family: inherit; transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-dropdown {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 12px; padding: 8px; min-width: 180px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: all 0.2s ease;
+    }
+    .theme-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .theme-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 0.85rem; color: var(--text-secondary);
+      transition: all 0.15s ease; border: none; background: none;
+      width: 100%; text-align: left; font-family: inherit;
+    }
+    .theme-option:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+    .theme-option.active { color: var(--accent); font-weight: 600; }
+    .theme-dot {
+      width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    /* Mobile Nav */
+    .nav-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      color: var(--text-primary); padding: 8px;
+    }
+    .nav-toggle svg { width: 24px; height: 24px; }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      padding: 140px 24px 60px; text-align: center;
+      background: var(--hero-gradient);
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 50px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      color: var(--accent); font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 24px; letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800;
+      line-height: 1.1; margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto 40px; line-height: 1.7;
+    }
+
+    /* ===== SEARCH BAR ===== */
+    .search-wrapper {
+      max-width: 640px; margin: 0 auto; position: relative; z-index: 100;
+    }
+    .search-box {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--bg-secondary); border: 2px solid var(--border);
+      border-radius: 16px; padding: 4px 6px 4px 20px;
+      transition: all 0.3s ease;
+    }
+    .search-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+    .search-box svg { width: 20px; height: 20px; color: var(--text-muted); flex-shrink: 0; }
+    .search-box input {
+      flex: 1; background: none; border: none; outline: none;
+      color: var(--text-primary); font-size: 1rem; font-family: inherit;
+      padding: 14px 0;
+    }
+    .search-box input::placeholder { color: var(--text-muted); }
+    .search-results {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; max-height: 400px; overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      display: none; z-index: 200;
+    }
+    .search-results.active { display: block; }
+    .search-result-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; cursor: pointer; transition: background 0.15s;
+    }
+    .search-result-item:hover { background: var(--bg-tertiary); }
+    .search-result-item:first-child { border-radius: 16px 16px 0 0; }
+    .search-result-item:last-child { border-radius: 0 0 16px 16px; }
+    .result-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0; color: #fff;
+    }
+    .result-info { flex: 1; min-width: 0; }
+    .result-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+    .result-desc { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .result-badge {
+      padding: 3px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 600;
+      background: var(--bg-tertiary); color: var(--text-secondary); flex-shrink: 0;
+    }
+    .search-google {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; border-top: 1px solid var(--border);
+      color: var(--accent); font-weight: 500; font-size: 0.9rem;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .search-google:hover { background: var(--bg-tertiary); }
+    .search-google:last-child { border-radius: 0 0 16px 16px; }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 48px; padding: 40px 24px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); display: block; line-height: 1.2; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+    /* ===== SECTION COMMON ===== */
+    .section { padding: 60px 24px; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 12px; }
+    .section-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+
+    /* ===== CATEGORY CARDS ===== */
+    .categories-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
+    }
+    .category-card {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 28px;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+      display: block;
+    }
+    .category-card:hover {
+      transform: translateY(-6px); border-color: var(--border-hover);
+      box-shadow: var(--shadow-lg); background: var(--card-hover-bg);
+    }
+    .category-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-weight: 800; font-size: 1.2rem; color: #fff;
+    }
+    .cat-pdf .category-icon { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .cat-image .category-icon { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+    .cat-text .category-icon { background: linear-gradient(135deg, #10b981, #34d399); }
+    .cat-business .category-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+    .category-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .category-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; line-height: 1.5; }
+    .category-count {
+      font-size: 0.8rem; font-weight: 600; color: var(--accent);
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ===== ALL TOOLS GRID ===== */
+    .tools-filter {
+      display: flex; gap: 8px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+      background: var(--bg-secondary); color: var(--text-secondary);
+      cursor: pointer; font-size: 0.85rem; font-weight: 500;
+      font-family: inherit; transition: all 0.2s ease;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+    .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .tools-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px;
+    }
+    .tool-item {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 16px;
+      display: flex; align-items: center; gap: 12px;
+      transition: all 0.25s ease; cursor: pointer;
+    }
+    .tool-item:hover {
+      background: var(--card-hover-bg); border-color: var(--border-hover);
+      transform: translateY(-2px); box-shadow: var(--shadow);
+    }
+    .tool-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .tool-dot.pdf { background: #6366f1; }
+    .tool-dot.image { background: #0ea5e9; }
+    .tool-dot.text { background: #10b981; }
+    .tool-dot.business { background: #f59e0b; }
+    .tool-item span { font-size: 0.9rem; font-weight: 500; }
+
+    /* ===== FEATURES SECTION ===== */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 24px; text-align: center;
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--bg-tertiary); margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1.4rem; font-weight: 700;
+    }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+      padding: 60px 24px; max-width: 800px; margin: 0 auto;
+      text-align: center;
+    }
+    .about-section h2 { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
+    .about-section p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: 12px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      border-top: 1px solid var(--border); padding: 40px 24px;
+      text-align: center; color: var(--text-muted);
+    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.8rem; margin-bottom: 6px; }
+    .footer-privacy { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: fixed; top: 64px; left: 0; right: 0;
+        background: var(--bg-secondary); border-bottom: 1px solid var(--border);
+        flex-direction: column; padding: 16px; gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .stats-bar { gap: 24px; }
+      .hero { padding: 120px 16px 40px; }
+      .section { padding: 40px 16px; }
+      .tools-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+      .tool-item { padding: 14px 12px; }
+    }
+
+    /* ===== SCROLLBAR ===== */
+    .search-results::-webkit-scrollbar { width: 6px; }
+    .search-results::-webkit-scrollbar-track { background: transparent; }
+    .search-results::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed; bottom: 24px; right: 24px; z-index: 900;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px var(--accent-glow);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .back-to-top:hover { transform: translateY(-2px); }
+    .back-to-top.visible { display: flex; }
+    .back-to-top svg { width: 20px; height: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">Elite Document Suite</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="#tools-section">Tools</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="position:relative;">
+        <button class="theme-btn" id="themeBtn" aria-label="Change theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Theme
+          <div class="theme-dropdown" id="themeDropdown">
+            <button class="theme-option active" data-theme="dark"><span class="theme-dot" style="background:#0f172a;"></span> Dark</button>
+            <button class="theme-option" data-theme="light"><span class="theme-dot" style="background:#f8fafc;border-color:#cbd5e1;"></span> Light</button>
+            <button class="theme-option" data-theme="ocean"><span class="theme-dot" style="background:#0a1628;"></span> Ocean</button>
+            <button class="theme-option" data-theme="forest"><span class="theme-dot" style="background:#0d1a0d;"></span> Forest</button>
+            <button class="theme-option" data-theme="sunset"><span class="theme-dot" style="background:#1a0f0a;"></span> Sunset</button>
+            <button class="theme-option" data-theme="royal"><span class="theme-dot" style="background:#13051e;"></span> Royal Purple</button>
+          </div>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-badge">FREE &amp; OPEN - 50+ TOOLS</div>
+    <h1>All-in-One Online<br>Document Toolkit</h1>
+    <p class="hero-subtitle">Process PDFs, images, text and business documents. Everything runs in your browser - your files never leave your device.</p>
+
+    <!-- SEARCH BAR -->
+    <div class="search-wrapper">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search tools... (e.g. PDF Merge, OCR, Invoice)" autocomplete="off" aria-label="Search tools">
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-value">100%</span><span class="stat-label">Private</span></div>
+    <div class="stat"><span class="stat-value">50+</span><span class="stat-label">Free Tools</span></div>
+    <div class="stat"><span class="stat-value">0</span><span class="stat-label">Server Uploads</span></div>
+    <div class="stat"><span class="stat-value">0</span><span class="stat-label">Sign-up Needed</span></div>
+  </div>
+
+  <!-- TOOL CATEGORIES -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Tool Categories</h2>
+      <p>Choose a category to explore all available tools</p>
+    </div>
+    <div class="categories-grid">
+      <a href="pdf-tools.html" class="category-card cat-pdf">
+        <div class="category-icon">PDF</div>
+        <h3>PDF Tools</h3>
+        <p>Merge, split, compress, watermark, convert and protect your PDF documents.</p>
+        <span class="category-count">20 tools available &rarr;</span>
+      </a>
+      <a href="image-tools.html" class="category-card cat-image">
+        <div class="category-icon">IMG</div>
+        <h3>Image Tools</h3>
+        <p>Resize, compress, convert formats, remove backgrounds and apply effects.</p>
+        <span class="category-count">18 tools available &rarr;</span>
+      </a>
+      <a href="text-tools.html" class="category-card cat-text">
+        <div class="category-icon">TXT</div>
+        <h3>Text &amp; Utility</h3>
+        <p>QR generators, word counters, JSON formatters, encoders and password tools.</p>
+        <span class="category-count">17 tools available &rarr;</span>
+      </a>
+      <a href="business-tools.html" class="category-card cat-business">
+        <div class="category-icon">BIZ</div>
+        <h3>Business Tools</h3>
+        <p>Invoice generator, resume builder, e-signatures, calculators and file tools.</p>
+        <span class="category-count">16 tools available &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ALL TOOLS SECTION -->
+  <section class="section" id="tools-section">
+    <div class="section-header">
+      <h2>All Tools</h2>
+      <p>Quick access to every tool in the suite</p>
+    </div>
+    <div class="tools-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pdf">PDF</button>
+      <button class="filter-btn" data-filter="image">Image</button>
+      <button class="filter-btn" data-filter="text">Text &amp; Utility</button>
+      <button class="filter-btn" data-filter="business">Business</button>
+    </div>
+    <div class="tools-grid" id="toolsGrid">
+      <!-- PDF Tools -->
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF Merge</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF Split</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF Compress</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF Watermark</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Protect PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Unlock PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Extract Text</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF to Word</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF to Excel</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF to PPT</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PDF to Image</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Image to PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Word to PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Excel to PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>PPT to PDF</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Rotate Pages</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Delete Pages</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Page Numbers</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Organize Pages</span></a>
+      <a href="pdf-tools.html" class="tool-item" data-cat="pdf"><span class="tool-dot pdf"></span><span>Remove Watermark</span></a>
+      <!-- Image Tools -->
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Image Resizer</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Bulk Resize</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Image Compressor</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Crop Image</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Rotate Image</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Flip Image</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>JPG to PNG</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>PNG to JPG</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>WebP to JPG</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Image to WebP</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Image to SVG</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Blur Effect</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>B&amp;W Filter</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Background Remover</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>OCR Text Recognition</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>DPI Converter</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Watermark Image</span></a>
+      <a href="image-tools.html" class="tool-item" data-cat="image"><span class="tool-dot image"></span><span>Text to Image</span></a>
+      <!-- Text & Utility Tools -->
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Word Counter</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Character Counter</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Case Converter</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>JSON Formatter</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>HTML Formatter</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Base64 Encode</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Base64 Decode</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>URL Encoder</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>QR Generator</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>QR Scanner</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Barcode Generator</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Password Generator</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Password Strength</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Color Picker</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>PDF to Text</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Text to PDF</span></a>
+      <a href="text-tools.html" class="tool-item" data-cat="text"><span class="tool-dot text"></span><span>Notepad</span></a>
+      <!-- Business Tools -->
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>ZIP Extractor</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Create ZIP</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>File Size Calculator</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>File Type Detector</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>7z Extractor</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>RAR Extractor</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>TAR Extractor</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Invoice Generator</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Resume Builder</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Business Card</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>ID Card Generator</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>E-Signature</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Digital Signature</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>Currency Converter</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>EMI Calculator</span></a>
+      <a href="business-tools.html" class="tool-item" data-cat="business"><span class="tool-dot business"></span><span>GST Calculator</span></a>
+    </div>
+  </section>
+
+  <!-- WHY USE US -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Why Elite Document Suite?</h2>
+      <p>Built for privacy, speed, and simplicity</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">P</div>
+        <h3>100% Private</h3>
+        <p>All files are processed in your browser. Nothing is uploaded to any server. Your data stays on your device.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">F</div>
+        <h3>Lightning Fast</h3>
+        <p>No waiting for server responses. Processing happens instantly using your device's computing power.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">$</div>
+        <h3>Completely Free</h3>
+        <p>All 50+ tools are free to use with no hidden charges, no watermarks, and no usage limits.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">0</div>
+        <h3>No Sign-up</h3>
+        <p>Start using any tool immediately. No account creation, no email verification, no friction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <h2>About Elite Document Suite</h2>
+    <p>Elite Document Suite is a free, privacy-focused collection of 50+ online tools for working with PDFs, images, text, and business documents. Created by <strong>Muhammad Hussain Shakir</strong>, our mission is to give everyone access to professional document tools without compromising privacy or paying expensive subscriptions.</p>
+    <p>Every tool runs entirely in your web browser using modern JavaScript APIs. Your files are never uploaded to any server, making this one of the most private document tool suites available online.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="#tools-section">All Tools</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Elite Document Suite by Muhammad Hussain Shakir. All rights reserved.</p>
+    <p class="footer-privacy">All processing happens in your browser. We never see your files.</p>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    /* ===== TOOLS DATABASE ===== */
+    const toolsDB = [
+      // PDF Tools
+      { name: "PDF Merge", desc: "Combine multiple PDFs into one file", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF Split", desc: "Split PDF into separate pages", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF Compress", desc: "Reduce PDF file size", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF Watermark", desc: "Add watermark to PDF pages", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Protect PDF", desc: "Add password protection to PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Unlock PDF", desc: "Remove password from PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Extract Text from PDF", desc: "Pull text content from PDF files", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF to Word", desc: "Convert PDF to DOCX format", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF to Excel", desc: "Convert PDF tables to Excel", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF to PowerPoint", desc: "Convert PDF to PPT slides", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PDF to Image", desc: "Convert PDF pages to images", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Image to PDF", desc: "Convert images to PDF document", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Word to PDF", desc: "Convert Word documents to PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Excel to PDF", desc: "Convert Excel sheets to PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "PPT to PDF", desc: "Convert presentations to PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Rotate PDF Pages", desc: "Rotate pages in a PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Delete PDF Pages", desc: "Remove specific pages from PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Add Page Numbers", desc: "Number pages in a PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Organize PDF Pages", desc: "Reorder pages in a PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      { name: "Remove Watermark", desc: "Remove watermarks from PDF", cat: "PDF", page: "pdf-tools.html", color: "#6366f1" },
+      // Image Tools
+      { name: "Image Resizer", desc: "Resize images to any dimension", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Bulk Image Resize", desc: "Resize multiple images at once", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Image Compressor", desc: "Reduce image file size", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Crop Image", desc: "Crop images to custom size", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Rotate Image", desc: "Rotate images by any angle", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Flip Image", desc: "Flip images horizontally or vertically", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "JPG to PNG", desc: "Convert JPG images to PNG", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "PNG to JPG", desc: "Convert PNG images to JPG", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "WebP to JPG", desc: "Convert WebP images to JPG", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Image to WebP", desc: "Convert images to WebP format", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Image to SVG", desc: "Convert images to SVG vector", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Blur Effect", desc: "Add blur effect to images", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Black & White Filter", desc: "Convert images to grayscale", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Background Remover", desc: "Remove image backgrounds", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "OCR Text Recognition", desc: "Extract text from images", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "DPI Converter", desc: "Change image DPI/resolution", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Watermark Image", desc: "Add watermark to images", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      { name: "Text to Image", desc: "Generate images from text", cat: "Image", page: "image-tools.html", color: "#0ea5e9" },
+      // Text & Utility Tools
+      { name: "Word Counter", desc: "Count words, characters & sentences", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Character Counter", desc: "Count characters in text", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Case Converter", desc: "Convert text case (upper, lower, title)", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "JSON Formatter", desc: "Format and validate JSON data", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "HTML Formatter", desc: "Beautify and format HTML code", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Base64 Encoder", desc: "Encode text to Base64", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Base64 Decoder", desc: "Decode Base64 to text", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "URL Encoder", desc: "Encode/decode URLs", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "QR Code Generator", desc: "Create QR codes from text/URLs", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "QR Code Scanner", desc: "Scan and read QR codes", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Barcode Generator", desc: "Generate barcodes from numbers", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Password Generator", desc: "Generate strong random passwords", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Password Strength Checker", desc: "Check how strong a password is", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Color Picker", desc: "Pick and convert colors", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "PDF to Text", desc: "Convert PDF content to text", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Text to PDF", desc: "Convert text to PDF document", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      { name: "Notepad", desc: "Simple online text editor", cat: "Text", page: "text-tools.html", color: "#10b981" },
+      // Business Tools
+      { name: "ZIP Extractor", desc: "Extract files from ZIP archives", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Create ZIP File", desc: "Create ZIP from multiple files", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "File Size Calculator", desc: "Calculate file and folder sizes", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "File Type Detector", desc: "Identify file types and formats", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "7z Extractor", desc: "Extract 7z archive files", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "RAR Extractor", desc: "Extract RAR archive files", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "TAR Extractor", desc: "Extract TAR archive files", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Invoice Generator", desc: "Create professional invoices", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Resume Builder", desc: "Build professional resumes", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Business Card Designer", desc: "Design custom business cards", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "ID Card Generator", desc: "Create ID cards", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "E-Signature Tool", desc: "Create electronic signatures", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Digital Signature", desc: "Sign documents digitally", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "Currency Converter", desc: "Convert between currencies", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "EMI Calculator", desc: "Calculate loan EMI payments", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+      { name: "GST Calculator", desc: "Calculate GST tax amounts", cat: "Business", page: "business-tools.html", color: "#f59e0b" },
+    ];
+
+    /* ===== SEARCH FUNCTIONALITY ===== */
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.trim().toLowerCase();
+      if (query.length === 0) {
+        searchResults.classList.remove('active');
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      const matches = toolsDB.filter(t =>
+        t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query) || t.cat.toLowerCase().includes(query)
+      );
+
+      let html = '';
+      const shown = matches.slice(0, 8);
+      shown.forEach(tool => {
+        html += `<a href="${tool.page}" class="search-result-item">
+          <div class="result-icon" style="background:${tool.color}">${tool.cat.slice(0,3).toUpperCase()}</div>
+          <div class="result-info">
+            <div class="result-name">${highlightMatch(tool.name, query)}</div>
+            <div class="result-desc">${tool.desc}</div>
+          </div>
+          <span class="result-badge">${tool.cat}</span>
+        </a>`;
+      });
+
+      if (matches.length > 8) {
+        html += `<div style="padding:8px 16px;font-size:0.8rem;color:var(--text-muted);text-align:center;">+${matches.length - 8} more results</div>`;
+      }
+
+      // Google search fallback
+      const googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query + ' online tool');
+      html += `<a href="${googleUrl}" target="_blank" rel="noopener" class="search-google">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        ${matches.length === 0 ? 'No local tools found. ' : ''}Search Google for "${this.value.trim()}"
+      </a>`;
+
+      searchResults.innerHTML = html;
+      searchResults.classList.add('active');
+    });
+
+    function highlightMatch(text, query) {
+      const idx = text.toLowerCase().indexOf(query);
+      if (idx === -1) return text;
+      return text.slice(0, idx) + '<strong style="color:var(--accent)">' + text.slice(idx, idx + query.length) + '</strong>' + text.slice(idx + query.length);
+    }
+
+    // Close search on click outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-wrapper')) {
+        searchResults.classList.remove('active');
+      }
+    });
+
+    // Reopen on focus
+    searchInput.addEventListener('focus', function() {
+      if (this.value.trim().length > 0) searchResults.classList.add('active');
+    });
+
+    /* ===== THEME SWITCHER ===== */
+    const themeBtn = document.getElementById('themeBtn');
+    const themeDropdown = document.getElementById('themeDropdown');
+    const themeOptions = themeDropdown.querySelectorAll('.theme-option');
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('eds-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeOptions.forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.theme === savedTheme);
+    });
+
+    themeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      themeDropdown.classList.toggle('open');
+    });
+
+    themeOptions.forEach(opt => {
+      opt.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const theme = this.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('eds-theme', theme);
+        themeOptions.forEach(o => o.classList.remove('active'));
+        this.classList.add('active');
+        themeDropdown.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', function() {
+      themeDropdown.classList.remove('open');
+    });
+
+    /* ===== TOOLS FILTER ===== */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const toolItems = document.querySelectorAll('.tool-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        toolItems.forEach(item => {
+          if (filter === 'all' || item.dataset.cat === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ===== MOBILE NAV ===== */
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    /* ===== BACK TO TOP ===== */
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ===== SERVICE WORKER ===== */
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+  </script>
+
+</body>
+</html>

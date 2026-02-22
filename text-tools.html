@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text & Utility Tools by Muhammad Hussain Shakir | Elite Document Suite</title>
+  <meta name="description" content="Free online text and utility tools including word counter, case converter, JSON formatter, QR generator, password tools and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --primary-light: #34d399;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --dark: #0f172a;
+      --dark-2: #1e293b;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== ANIMATED BACKGROUND ===== */
+    .bg-decoration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-decoration .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite;
+    }
+    .bg-decoration .orb:nth-child(1) {
+      width: 600px; height: 600px;
+      background: var(--primary);
+      top: -200px; left: -200px;
+      animation-delay: 0s;
+    }
+    .bg-decoration .orb:nth-child(2) {
+      width: 500px; height: 500px;
+      background: var(--accent);
+      top: 50%; right: -200px;
+      animation-delay: -7s;
+      animation-duration: 25s;
+    }
+    .bg-decoration .orb:nth-child(3) {
+      width: 400px; height: 400px;
+      background: #f59e0b;
+      bottom: -100px; left: 30%;
+      animation-delay: -14s;
+      animation-duration: 30s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -50px) scale(1.1); }
+      50% { transform: translate(-30px, 30px) scale(0.9); }
+      75% { transform: translate(40px, 20px) scale(1.05); }
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 40%, var(--primary-dark) 100%);
+      color: white;
+      padding: 60px 20px 50px;
+      text-align: center;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    header .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    header .header-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px; height: 70px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.3); }
+      50% { box-shadow: 0 0 40px rgba(16,185,129,0.6); }
+    }
+    header h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      font-size: 16px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    header .badge span {
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 50px 0 24px;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+    .section-title:first-of-type {
+      margin-top: 10px;
+    }
+    .section-title .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      font-size: 22px;
+    }
+    .section-title .icon.green {
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      color: var(--primary-dark);
+    }
+    .section-title .icon.purple {
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      color: var(--accent);
+    }
+    .section-title .line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--gray-200), transparent);
+      margin-left: 10px;
+    }
+
+    /* ===== TOOLS GRID ===== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ===== TOOL CARD ===== */
+    .tool-card {
+      position: relative;
+      background: var(--white);
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+    .tool-card .card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px; height: 50px;
+      border-radius: 14px;
+      font-size: 24px;
+      margin-bottom: 16px;
+      transition: transform 0.3s ease;
+    }
+    .tool-card:hover .card-icon {
+      transform: scale(1.1);
+    }
+    .tool-card .card-icon.green {
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    }
+    .tool-card .card-icon.purple {
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    }
+    .tool-card .card-icon.amber {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+    }
+    .tool-card .card-icon.rose {
+      background: linear-gradient(135deg, #ffe4e6, #fecdd3);
+    }
+    .tool-card .card-icon.sky {
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+    }
+    .tool-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    .tool-card p {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+    .tool-card .arrow {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 32px; height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-100);
+      border-radius: 8px;
+      color: var(--gray-400);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .tool-card:hover .arrow {
+      background: var(--primary);
+      color: white;
+      transform: translateX(4px);
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+    .modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal {
+      background: var(--white);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: var(--shadow-xl);
+      animation: slideUp 0.3s ease;
+      overflow: hidden;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .modal-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-800);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .modal-header .close-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border: none;
+      background: var(--gray-200);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--gray-600);
+      transition: all 0.2s ease;
+    }
+    .modal-header .close-btn:hover {
+      background: #fee2e2;
+      color: #ef4444;
+    }
+    .modal-body {
+      padding: 28px;
+    }
+
+    /* ===== FORM ELEMENTS ===== */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    textarea, input[type="text"], input[type="number"], input[type="password"], input[type="file"], select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--gray-800);
+      background: var(--white);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    textarea:focus, input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.1);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+    input[type="file"] {
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 14px rgba(16,185,129,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.45);
+    }
+    .btn-secondary {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+    }
+    .btn-secondary:hover {
+      background: var(--gray-200);
+    }
+    .btn-accent {
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99,102,241,0.35);
+    }
+    .btn-accent:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.45);
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .output-area {
+      background: var(--gray-50);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      min-height: 80px;
+      font-size: 14px;
+      color: var(--gray-800);
+      line-height: 1.6;
+      word-break: break-all;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .result-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 1px solid #a7f3d0;
+      border-radius: var(--radius-sm);
+      margin-top: 16px;
+    }
+    .result-box .result-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .result-box .result-label {
+      font-size: 14px;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    /* Password Strength Meter */
+    .strength-meter {
+      height: 10px;
+      border-radius: 5px;
+      background: var(--gray-200);
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .strength-meter .bar {
+      height: 100%;
+      border-radius: 5px;
+      transition: all 0.4s ease;
+      width: 0%;
+    }
+    .strength-label {
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Color Picker */
+    .color-display {
+      width: 100%;
+      height: 120px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--gray-200);
+      margin-bottom: 16px;
+      transition: background 0.3s ease;
+    }
+    .color-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .color-value-box {
+      padding: 12px;
+      background: var(--gray-50);
+      border-radius: var(--radius-xs);
+      text-align: center;
+      border: 1px solid var(--gray-200);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .color-value-box:hover {
+      border-color: var(--primary);
+    }
+    .color-value-box .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .color-value-box .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    /* Range slider */
+    input[type="range"] {
+      width: 100%;
+      margin: 8px 0;
+      accent-color: var(--primary);
+    }
+
+    /* Checkbox/option row */
+    .option-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .option-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .option-row label {
+      font-size: 14px;
+      color: var(--gray-700);
+      cursor: pointer;
+      margin: 0;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    /* QR/Barcode containers */
+    .qr-output, .barcode-output {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: var(--white);
+      border: 2px dashed var(--gray-200);
+      border-radius: var(--radius-sm);
+      min-height: 100px;
+    }
+    .qr-output img, .qr-output canvas {
+      border-radius: 8px;
+    }
+
+    /* Notepad */
+    .notepad-area {
+      min-height: 300px;
+      font-family: 'Inter', monospace;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .notepad-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--dark);
+      color: var(--gray-400);
+      font-size: 14px;
+    }
+    footer .footer-brand {
+      font-weight: 700;
+      color: var(--primary-light);
+    }
+    footer p {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header { padding: 40px 16px 36px; }
+      header h1 { font-size: 28px; }
+      .container { padding: 24px 16px 40px; }
+      .section-title { font-size: 20px; margin: 36px 0 16px; }
+      .tools-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .tool-card { padding: 20px 18px; }
+      .tool-card .arrow { display: none; }
+      .modal { border-radius: 16px; }
+      .modal-body { padding: 20px; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; }
+      .color-values { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      header h1 { font-size: 24px; }
+      .tools-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Scrollbar ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 14px 24px;
+      background: var(--dark);
+      color: white;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 2000;
+      box-shadow: var(--shadow-lg);
+      animation: toastIn 0.3s ease, toastOut 0.3s ease 2.5s forwards;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes toastOut {
+      from { opacity: 1; }
+      to { opacity: 0; transform: translateY(10px); }
+    }
+  </style>
+</head>
+<body>
+
+<nav style="display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:48px;background:#0f172a;border-bottom:1px solid #1e293b;font-family:'Inter',sans-serif;font-size:0.85rem;position:sticky;top:0;z-index:9999;">
+  <a href="index.html" style="color:#34d399;font-weight:700;text-decoration:none;">Elite Document Suite</a>
+  <div style="display:flex;gap:16px;">
+    <a href="index.html" style="color:#94a3b8;text-decoration:none;">Home</a>
+    <a href="about.html" style="color:#94a3b8;text-decoration:none;">About</a>
+    <a href="contact.html" style="color:#94a3b8;text-decoration:none;">Contact</a>
+    <a href="terms.html" style="color:#94a3b8;text-decoration:none;">Terms</a>
+    <a href="privacy.html" style="color:#94a3b8;text-decoration:none;">Privacy</a>
+  </div>
+</nav>
+
+<div class="bg-decoration">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</div>
+
+<header>
+  <div class="header-content">
+    <div class="header-icon">&#9881;</div>
+    <h1>Text & Utility Tools</h1>
+    <p>By Muhammad Hussain Shakir | Elite Document Suite</p>
+    <div class="badge">&#9889; <span>17</span> Free Online Tools &mdash; Fast & Private</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- BASIC TEXT TOOLS -->
+  <div class="section-title">
+    <div class="icon green">&#9998;</div>
+    Basic Text Tools
+    <div class="line"></div>
+  </div>
+  <div class="tools-grid">
+
+    <div class="tool-card" onclick="openTool('wordCounter')">
+      <div class="card-icon green">&#128221;</div>
+      <h3>Word Counter</h3>
+      <p>Count words instantly in your text.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('charCounter')">
+      <div class="card-icon green">&#128290;</div>
+      <h3>Character Counter</h3>
+      <p>Count characters including spaces.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('caseConverter')">
+      <div class="card-icon sky">&#128260;</div>
+      <h3>Case Converter</h3>
+      <p>Convert text to UPPERCASE, lowercase or Title Case.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('textToPdf')">
+      <div class="card-icon amber">&#128196;</div>
+      <h3>Text to PDF</h3>
+      <p>Convert plain text into PDF file.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('pdfToText')">
+      <div class="card-icon rose">&#128195;</div>
+      <h3>PDF to Text</h3>
+      <p>Extract text from PDF document.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('notepad')">
+      <div class="card-icon purple">&#128466;</div>
+      <h3>Online Notepad</h3>
+      <p>Write and save notes online.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('passGen')">
+      <div class="card-icon green">&#128274;</div>
+      <h3>Password Generator</h3>
+      <p>Generate strong secure passwords.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('passCheck')">
+      <div class="card-icon rose">&#128737;</div>
+      <h3>Password Strength Checker</h3>
+      <p>Check password security level.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+  </div>
+
+  <!-- ADVANCED UTILITY TOOLS -->
+  <div class="section-title">
+    <div class="icon purple">&#128295;</div>
+    Advanced Utility Tools
+    <div class="line"></div>
+  </div>
+  <div class="tools-grid">
+
+    <div class="tool-card" onclick="openTool('jsonFmt')">
+      <div class="card-icon purple">&#123;&#125;</div>
+      <h3>JSON Formatter</h3>
+      <p>Format and validate JSON data.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('htmlFmt')">
+      <div class="card-icon sky">&#128196;</div>
+      <h3>HTML Formatter</h3>
+      <p>Beautify and format HTML code.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('base64Enc')">
+      <div class="card-icon green">&#128272;</div>
+      <h3>Base64 Encoder</h3>
+      <p>Encode text into Base64 format.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('base64Dec')">
+      <div class="card-icon amber">&#128273;</div>
+      <h3>Base64 Decoder</h3>
+      <p>Decode Base64 encoded data.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('qrGen')">
+      <div class="card-icon purple">&#9641;</div>
+      <h3>QR Code Generator</h3>
+      <p>Create custom QR codes instantly.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('qrScan')">
+      <div class="card-icon rose">&#128247;</div>
+      <h3>QR Code Scanner</h3>
+      <p>Scan QR codes from images.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('barcodeGen')">
+      <div class="card-icon amber">&#9612;</div>
+      <h3>Barcode Generator</h3>
+      <p>Generate barcodes for products.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('urlEnc')">
+      <div class="card-icon sky">&#128279;</div>
+      <h3>URL Encoder / Decoder</h3>
+      <p>Encode or decode website URLs.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+    <div class="tool-card" onclick="openTool('colorPicker')">
+      <div class="card-icon green">&#127912;</div>
+      <h3>Color Code Picker</h3>
+      <p>Pick HEX, RGB and CSS colors easily.</p>
+      <div class="arrow">&#8594;</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div>&copy; 2026 <span class="footer-brand">Elite Document Suite</span></div>
+  <p>Text & Utility Tools by Muhammad Hussain Shakir</p>
+</footer>
+
+<!-- ===== MODAL OVERLAY ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ===== MODAL SYSTEM =====
+function openTool(toolId) {
+  const overlay = document.getElementById('modalOverlay');
+  const title = document.getElementById('modalTitle');
+  const body = document.getElementById('modalBody');
+
+  const tools = {
+    wordCounter: { title: '&#128221; Word Counter', render: renderWordCounter },
+    charCounter: { title: '&#128290; Character Counter', render: renderCharCounter },
+    caseConverter: { title: '&#128260; Case Converter', render: renderCaseConverter },
+    textToPdf: { title: '&#128196; Text to PDF', render: renderTextToPdf },
+    pdfToText: { title: '&#128195; PDF to Text', render: renderPdfToText },
+    notepad: { title: '&#128466; Online Notepad', render: renderNotepad },
+    passGen: { title: '&#128274; Password Generator', render: renderPassGen },
+    passCheck: { title: '&#128737; Password Strength Checker', render: renderPassCheck },
+    jsonFmt: { title: '{} JSON Formatter', render: renderJsonFmt },
+    htmlFmt: { title: '&#128196; HTML Formatter', render: renderHtmlFmt },
+    base64Enc: { title: '&#128272; Base64 Encoder', render: renderBase64Enc },
+    base64Dec: { title: '&#128273; Base64 Decoder', render: renderBase64Dec },
+    qrGen: { title: '&#9641; QR Code Generator', render: renderQrGen },
+    qrScan: { title: '&#128247; QR Code Scanner', render: renderQrScan },
+    barcodeGen: { title: '&#9612; Barcode Generator', render: renderBarcodeGen },
+    urlEnc: { title: '&#128279; URL Encoder / Decoder', render: renderUrlEnc },
+    colorPicker: { title: '&#127912; Color Code Picker', render: renderColorPicker },
+  };
+
+  const tool = tools[toolId];
+  if (!tool) return;
+
+  title.innerHTML = tool.title;
+  body.innerHTML = '';
+  tool.render(body);
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '&#10003; ' + msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!'));
+}
+
+// ===== 1. WORD COUNTER =====
+function renderWordCounter(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter your text</label>
+      <textarea id="wcInput" placeholder="Type or paste your text here..."></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="countWords()">&#128202; Count Words</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('wcInput').value=''; document.getElementById('wcResult').innerHTML=''">Clear</button>
+    </div>
+    <div id="wcResult"></div>
+  `;
+}
+function countWords() {
+  const text = document.getElementById('wcInput').value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const sentences = text ? text.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+  const paragraphs = text ? text.split(/\n\s*\n/).filter(p => p.trim()).length : 0;
+  document.getElementById('wcResult').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
+      <div class="result-box" style="flex-direction:column;text-align:center">
+        <div class="result-number">${words}</div>
+        <div class="result-label">Words</div>
+      </div>
+      <div class="result-box" style="flex-direction:column;text-align:center">
+        <div class="result-number">${sentences}</div>
+        <div class="result-label">Sentences</div>
+      </div>
+      <div class="result-box" style="flex-direction:column;text-align:center">
+        <div class="result-number">${paragraphs}</div>
+        <div class="result-label">Paragraphs</div>
+      </div>
+    </div>`;
+}
+
+// ===== 2. CHARACTER COUNTER =====
+function renderCharCounter(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter your text</label>
+      <textarea id="ccInput" placeholder="Type or paste your text here..." oninput="countChars()"></textarea>
+    </div>
+    <div id="ccResult"></div>
+  `;
+}
+function countChars() {
+  const text = document.getElementById('ccInput').value;
+  const withSpaces = text.length;
+  const withoutSpaces = text.replace(/\s/g, '').length;
+  document.getElementById('ccResult').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+      <div class="result-box" style="flex-direction:column;text-align:center">
+        <div class="result-number">${withSpaces}</div>
+        <div class="result-label">With Spaces</div>
+      </div>
+      <div class="result-box" style="flex-direction:column;text-align:center">
+        <div class="result-number">${withoutSpaces}</div>
+        <div class="result-label">Without Spaces</div>
+      </div>
+    </div>`;
+}
+
+// ===== 3. CASE CONVERTER =====
+function renderCaseConverter(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter your text</label>
+      <textarea id="ccaseInput" placeholder="Type or paste your text here..."></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="convertCase('upper')">UPPERCASE</button>
+      <button class="btn btn-accent" onclick="convertCase('lower')">lowercase</button>
+      <button class="btn btn-secondary" onclick="convertCase('title')">Title Case</button>
+      <button class="btn btn-secondary" onclick="convertCase('sentence')">Sentence case</button>
+    </div>
+    <div class="form-group" style="margin-top:16px">
+      <label>Result</label>
+      <div class="output-area" id="ccaseOutput" onclick="copyToClipboard(this.textContent)">Result will appear here...</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400);margin-top:8px">Click result to copy</p>
+  `;
+}
+function convertCase(type) {
+  const text = document.getElementById('ccaseInput').value;
+  let result = '';
+  switch(type) {
+    case 'upper': result = text.toUpperCase(); break;
+    case 'lower': result = text.toLowerCase(); break;
+    case 'title': result = text.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase()); break;
+    case 'sentence': result = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase()); break;
+  }
+  document.getElementById('ccaseOutput').textContent = result;
+}
+
+// ===== 4. TEXT TO PDF =====
+function renderTextToPdf(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter your text</label>
+      <textarea id="t2pInput" placeholder="Type or paste text to convert to PDF..." style="min-height:200px"></textarea>
+    </div>
+    <div class="form-group">
+      <label>File name</label>
+      <input type="text" id="t2pName" placeholder="document" value="document">
+    </div>
+    <button class="btn btn-primary" onclick="textToPdf()">&#128196; Generate PDF</button>
+  `;
+}
+function textToPdf() {
+  const text = document.getElementById('t2pInput').value;
+  const name = document.getElementById('t2pName').value || 'document';
+  if (!text.trim()) { showToast('Please enter some text'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const lines = doc.splitTextToSize(text, 180);
+  let y = 20;
+  lines.forEach(line => {
+    if (y > 275) { doc.addPage(); y = 20; }
+    doc.text(line, 15, y);
+    y += 7;
+  });
+  doc.save(name + '.pdf');
+  showToast('PDF downloaded!');
+}
+
+// ===== 5. PDF TO TEXT =====
+function renderPdfToText(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Upload PDF file</label>
+      <input type="file" id="p2tInput" accept=".pdf" onchange="extractPdfText()">
+    </div>
+    <div class="form-group">
+      <label>Extracted Text</label>
+      <div class="output-area" id="p2tOutput" style="min-height:150px">Upload a PDF to extract text...</div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="copyToClipboard(document.getElementById('p2tOutput').textContent)">&#128203; Copy Text</button>
+    </div>
+  `;
+}
+async function extractPdfText() {
+  const file = document.getElementById('p2tInput').files[0];
+  if (!file) return;
+  const output = document.getElementById('p2tOutput');
+  output.textContent = 'Extracting text...';
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let text = '';
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      text += content.items.map(item => item.str).join(' ') + '\n\n';
+    }
+    output.textContent = text.trim() || 'No text found in this PDF.';
+  } catch (err) {
+    output.textContent = 'Error reading PDF: ' + err.message;
+  }
+}
+
+// ===== 6. ONLINE NOTEPAD =====
+function renderNotepad(el) {
+  const saved = localStorage.getItem('notepad_content') || '';
+  el.innerHTML = `
+    <textarea id="notepadArea" class="notepad-area" placeholder="Start writing your notes here..." oninput="updateNotepadStatus()">${saved}</textarea>
+    <div class="notepad-status">
+      <span id="notepadStatus">${saved ? 'Loaded from saved notes' : 'Start typing...'}</span>
+      <span id="notepadCount">${saved.length} characters</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="saveNotepad()">&#128190; Save</button>
+      <button class="btn btn-secondary" onclick="downloadNotepad()">&#128229; Download as .txt</button>
+      <button class="btn btn-secondary" onclick="clearNotepad()">&#128465; Clear</button>
+    </div>
+  `;
+}
+function updateNotepadStatus() {
+  const text = document.getElementById('notepadArea').value;
+  document.getElementById('notepadCount').textContent = text.length + ' characters';
+}
+function saveNotepad() {
+  localStorage.setItem('notepad_content', document.getElementById('notepadArea').value);
+  document.getElementById('notepadStatus').textContent = 'Saved!';
+  showToast('Notes saved!');
+}
+function downloadNotepad() {
+  const text = document.getElementById('notepadArea').value;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'notes.txt';
+  a.click();
+  showToast('Downloaded!');
+}
+function clearNotepad() {
+  document.getElementById('notepadArea').value = '';
+  localStorage.removeItem('notepad_content');
+  updateNotepadStatus();
+  document.getElementById('notepadStatus').textContent = 'Cleared';
+}
+
+// ===== 7. PASSWORD GENERATOR =====
+function renderPassGen(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Password Length: <strong id="pgLenVal">16</strong></label>
+      <input type="range" id="pgLength" min="6" max="64" value="16" oninput="document.getElementById('pgLenVal').textContent=this.value">
+    </div>
+    <div class="option-row"><input type="checkbox" id="pgUpper" checked><label for="pgUpper">Uppercase (A-Z)</label></div>
+    <div class="option-row"><input type="checkbox" id="pgLower" checked><label for="pgLower">Lowercase (a-z)</label></div>
+    <div class="option-row"><input type="checkbox" id="pgNumbers" checked><label for="pgNumbers">Numbers (0-9)</label></div>
+    <div class="option-row"><input type="checkbox" id="pgSymbols" checked><label for="pgSymbols">Symbols (!@#$...)</label></div>
+    <div style="margin-top:16px">
+      <button class="btn btn-primary" onclick="generatePassword()">&#128274; Generate Password</button>
+    </div>
+    <div class="form-group" style="margin-top:16px">
+      <div class="output-area" id="pgOutput" style="font-size:18px;font-weight:700;letter-spacing:1px;text-align:center;cursor:pointer;min-height:50px;display:flex;align-items:center;justify-content:center" onclick="copyToClipboard(this.textContent)">Click Generate</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400)">Click password to copy</p>
+  `;
+}
+function generatePassword() {
+  const len = parseInt(document.getElementById('pgLength').value);
+  let chars = '';
+  if (document.getElementById('pgUpper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (document.getElementById('pgLower').checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+  if (document.getElementById('pgNumbers').checked) chars += '0123456789';
+  if (document.getElementById('pgSymbols').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+  if (!chars) { showToast('Select at least one option'); return; }
+  let pass = '';
+  const arr = new Uint32Array(len);
+  crypto.getRandomValues(arr);
+  for (let i = 0; i < len; i++) pass += chars[arr[i] % chars.length];
+  document.getElementById('pgOutput').textContent = pass;
+}
+
+// ===== 8. PASSWORD STRENGTH CHECKER =====
+function renderPassCheck(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter password to check</label>
+      <input type="text" id="psInput" placeholder="Enter password..." oninput="checkPasswordStrength()">
+    </div>
+    <div class="strength-meter"><div class="bar" id="psBar"></div></div>
+    <div class="strength-label" id="psLabel" style="color:var(--gray-400)">Enter a password to check</div>
+    <div id="psFeedback" style="margin-top:12px;font-size:13px;color:var(--gray-500)"></div>
+  `;
+}
+function checkPasswordStrength() {
+  const pass = document.getElementById('psInput').value;
+  const bar = document.getElementById('psBar');
+  const label = document.getElementById('psLabel');
+  const feedback = document.getElementById('psFeedback');
+  if (!pass) { bar.style.width='0%'; label.textContent='Enter a password'; label.style.color='var(--gray-400)'; feedback.innerHTML=''; return; }
+  let score = 0;
+  const tips = [];
+  if (pass.length >= 8) score++; else tips.push('Use at least 8 characters');
+  if (pass.length >= 12) score++;
+  if (pass.length >= 16) score++;
+  if (/[a-z]/.test(pass)) score++; else tips.push('Add lowercase letters');
+  if (/[A-Z]/.test(pass)) score++; else tips.push('Add uppercase letters');
+  if (/[0-9]/.test(pass)) score++; else tips.push('Add numbers');
+  if (/[^a-zA-Z0-9]/.test(pass)) score++; else tips.push('Add special characters');
+  if (!/(.)\1{2,}/.test(pass)) score++; else tips.push('Avoid repeated characters');
+
+  const levels = [
+    { max: 2, label: 'Very Weak', color: '#ef4444', width: '15%' },
+    { max: 4, label: 'Weak', color: '#f97316', width: '35%' },
+    { max: 6, label: 'Medium', color: '#eab308', width: '55%' },
+    { max: 7, label: 'Strong', color: '#22c55e', width: '80%' },
+    { max: 99, label: 'Very Strong', color: '#10b981', width: '100%' },
+  ];
+  const level = levels.find(l => score <= l.max);
+  bar.style.width = level.width;
+  bar.style.background = level.color;
+  label.textContent = level.label;
+  label.style.color = level.color;
+  feedback.innerHTML = tips.length ? '<strong>Tips:</strong> ' + tips.join(' &bull; ') : '&#10003; Excellent password!';
+}
+
+// ===== 9. JSON FORMATTER =====
+function renderJsonFmt(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter JSON</label>
+      <textarea id="jfInput" placeholder='{"key": "value"}' style="font-family:monospace"></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="formatJson()">&#10004; Format & Validate</button>
+      <button class="btn btn-secondary" onclick="minifyJson()">Minify</button>
+      <button class="btn btn-secondary" onclick="copyToClipboard(document.getElementById('jfOutput').textContent)">Copy</button>
+    </div>
+    <div class="form-group" style="margin-top:16px">
+      <label>Result</label>
+      <div class="output-area" id="jfOutput" style="font-family:monospace">Formatted JSON will appear here...</div>
+    </div>
+  `;
+}
+function formatJson() {
+  try {
+    const json = JSON.parse(document.getElementById('jfInput').value);
+    document.getElementById('jfOutput').textContent = JSON.stringify(json, null, 2);
+    showToast('Valid JSON!');
+  } catch(e) {
+    document.getElementById('jfOutput').textContent = 'Error: ' + e.message;
+  }
+}
+function minifyJson() {
+  try {
+    const json = JSON.parse(document.getElementById('jfInput').value);
+    document.getElementById('jfOutput').textContent = JSON.stringify(json);
+    showToast('Minified!');
+  } catch(e) {
+    document.getElementById('jfOutput').textContent = 'Error: ' + e.message;
+  }
+}
+
+// ===== 10. HTML FORMATTER =====
+function renderHtmlFmt(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter HTML</label>
+      <textarea id="hfInput" placeholder="<div><p>Hello</p></div>" style="font-family:monospace"></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="formatHtml()">&#10004; Beautify HTML</button>
+      <button class="btn btn-secondary" onclick="minifyHtml()">Minify</button>
+      <button class="btn btn-secondary" onclick="copyToClipboard(document.getElementById('hfOutput').textContent)">Copy</button>
+    </div>
+    <div class="form-group" style="margin-top:16px">
+      <label>Result</label>
+      <div class="output-area" id="hfOutput" style="font-family:monospace">Formatted HTML will appear here...</div>
+    </div>
+  `;
+}
+function formatHtml() {
+  const html = document.getElementById('hfInput').value;
+  let formatted = '', indent = 0;
+  const selfClosing = ['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'];
+  html.replace(/>\s*</g, '>\n<').split('\n').forEach(line => {
+    line = line.trim();
+    if (!line) return;
+    const isClosing = /^<\//.test(line);
+    const isOpening = /^<[^/!]/.test(line) && !selfClosing.some(t => line.toLowerCase().startsWith('<' + t));
+    const isSelfClose = /\/>$/.test(line) || selfClosing.some(t => line.toLowerCase().startsWith('<' + t));
+    if (isClosing) indent = Math.max(0, indent - 1);
+    formatted += '  '.repeat(indent) + line + '\n';
+    if (isOpening && !isSelfClose && !isClosing && !/<.*>.*<\/.*>/.test(line)) indent++;
+  });
+  document.getElementById('hfOutput').textContent = formatted.trim();
+}
+function minifyHtml() {
+  document.getElementById('hfOutput').textContent = document.getElementById('hfInput').value.replace(/\s+/g, ' ').replace(/>\s+</g, '><').trim();
+}
+
+// ===== 11. BASE64 ENCODER =====
+function renderBase64Enc(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter text to encode</label>
+      <textarea id="b64eInput" placeholder="Enter text here..."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="encodeBase64()">&#128272; Encode</button>
+    <div class="form-group" style="margin-top:16px">
+      <label>Base64 Result</label>
+      <div class="output-area" id="b64eOutput" onclick="copyToClipboard(this.textContent)" style="cursor:pointer">Result will appear here...</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400);margin-top:8px">Click result to copy</p>
+  `;
+}
+function encodeBase64() {
+  const text = document.getElementById('b64eInput').value;
+  if (!text) { showToast('Enter text first'); return; }
+  document.getElementById('b64eOutput').textContent = btoa(unescape(encodeURIComponent(text)));
+  showToast('Encoded!');
+}
+
+// ===== 12. BASE64 DECODER =====
+function renderBase64Dec(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter Base64 to decode</label>
+      <textarea id="b64dInput" placeholder="Enter Base64 string here..."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="decodeBase64()">&#128273; Decode</button>
+    <div class="form-group" style="margin-top:16px">
+      <label>Decoded Result</label>
+      <div class="output-area" id="b64dOutput" onclick="copyToClipboard(this.textContent)" style="cursor:pointer">Result will appear here...</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400);margin-top:8px">Click result to copy</p>
+  `;
+}
+function decodeBase64() {
+  try {
+    const text = document.getElementById('b64dInput').value;
+    if (!text) { showToast('Enter Base64 first'); return; }
+    document.getElementById('b64dOutput').textContent = decodeURIComponent(escape(atob(text)));
+    showToast('Decoded!');
+  } catch(e) {
+    document.getElementById('b64dOutput').textContent = 'Error: Invalid Base64 string';
+  }
+}
+
+// ===== 13. QR CODE GENERATOR =====
+function renderQrGen(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter text or URL</label>
+      <input type="text" id="qrInput" placeholder="https://example.com or any text">
+    </div>
+    <button class="btn btn-primary" onclick="generateQR()">&#9641; Generate QR Code</button>
+    <div class="qr-output" id="qrOutput" style="margin-top:16px">
+      <p style="color:var(--gray-400);font-size:14px">QR Code will appear here</p>
+    </div>
+  `;
+}
+function generateQR() {
+  const text = document.getElementById('qrInput').value;
+  if (!text) { showToast('Enter text or URL'); return; }
+  const container = document.getElementById('qrOutput');
+  container.innerHTML = '';
+  const qrDiv = document.createElement('div');
+  container.appendChild(qrDiv);
+  new QRCode(qrDiv, {
+    text: text, width: 200, height: 200,
+    colorDark: '#0f172a', colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  const dlBtn = document.createElement('button');
+  dlBtn.className = 'btn btn-secondary';
+  dlBtn.innerHTML = '&#128229; Download';
+  dlBtn.onclick = function() {
+    const canvas = qrDiv.querySelector('canvas');
+    if (canvas) {
+      const a = document.createElement('a');
+      a.download = 'qrcode.png';
+      a.href = canvas.toDataURL();
+      a.click();
+    }
+  };
+  container.appendChild(dlBtn);
+  showToast('QR Code generated!');
+}
+
+// ===== 14. QR CODE SCANNER =====
+function renderQrScan(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Upload an image with QR code</label>
+      <input type="file" id="qrScanInput" accept="image/*" onchange="scanQRCode()">
+    </div>
+    <div class="form-group">
+      <label>Scanned Result</label>
+      <div class="output-area" id="qrScanOutput" onclick="copyToClipboard(this.textContent)" style="cursor:pointer;min-height:60px">Upload an image to scan...</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400)">Click result to copy. Uses canvas-based decoding.</p>
+  `;
+}
+function scanQRCode() {
+  const file = document.getElementById('qrScanInput').files[0];
+  if (!file) return;
+  const output = document.getElementById('qrScanOutput');
+  output.textContent = 'Scanning...';
+  const img = new Image();
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(imageData.data, imageData.width, imageData.height);
+    if (code) {
+      output.textContent = code.data;
+      showToast('QR Code scanned!');
+    } else {
+      output.textContent = 'No QR code found in this image. Try a clearer image with a visible QR code.';
+    }
+  };
+  img.src = URL.createObjectURL(file);
+}
+
+// ===== 15. BARCODE GENERATOR =====
+function renderBarcodeGen(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter barcode value</label>
+      <input type="text" id="bcInput" placeholder="123456789012">
+    </div>
+    <div class="form-group">
+      <label>Barcode format</label>
+      <select id="bcFormat">
+        <option value="CODE128">CODE128 (General)</option>
+        <option value="EAN13">EAN-13</option>
+        <option value="UPC">UPC</option>
+        <option value="CODE39">CODE39</option>
+        <option value="ITF14">ITF-14</option>
+        <option value="pharmacode">Pharmacode</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="generateBarcode()">&#9612; Generate Barcode</button>
+    <div class="barcode-output" id="bcOutput" style="margin-top:16px">
+      <p style="color:var(--gray-400);font-size:14px">Barcode will appear here</p>
+    </div>
+  `;
+}
+function generateBarcode() {
+  const value = document.getElementById('bcInput').value;
+  const format = document.getElementById('bcFormat').value;
+  if (!value) { showToast('Enter a barcode value'); return; }
+  const container = document.getElementById('bcOutput');
+  container.innerHTML = '<svg id="bcSvg"></svg>';
+  try {
+    JsBarcode('#bcSvg', value, { format: format, width: 2, height: 80, displayValue: true, fontSize: 16, margin: 10 });
+    const dlBtn = document.createElement('button');
+    dlBtn.className = 'btn btn-secondary';
+    dlBtn.innerHTML = '&#128229; Download';
+    dlBtn.onclick = function() {
+      const svg = document.getElementById('bcSvg');
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+        const a = document.createElement('a');
+        a.download = 'barcode.png';
+        a.href = canvas.toDataURL();
+        a.click();
+      };
+      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+    };
+    container.appendChild(dlBtn);
+    showToast('Barcode generated!');
+  } catch(e) {
+    container.innerHTML = '<p style="color:#ef4444">Error: ' + e.message + '</p>';
+  }
+}
+
+// ===== 16. URL ENCODER / DECODER =====
+function renderUrlEnc(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Enter URL or text</label>
+      <textarea id="urlInput" placeholder="https://example.com/path?key=value with spaces"></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="encodeUrl()">&#128272; Encode</button>
+      <button class="btn btn-accent" onclick="decodeUrl()">&#128273; Decode</button>
+      <button class="btn btn-secondary" onclick="copyToClipboard(document.getElementById('urlOutput').textContent)">Copy</button>
+    </div>
+    <div class="form-group" style="margin-top:16px">
+      <label>Result</label>
+      <div class="output-area" id="urlOutput">Result will appear here...</div>
+    </div>
+  `;
+}
+function encodeUrl() {
+  const text = document.getElementById('urlInput').value;
+  if (!text) { showToast('Enter text first'); return; }
+  document.getElementById('urlOutput').textContent = encodeURIComponent(text);
+  showToast('Encoded!');
+}
+function decodeUrl() {
+  try {
+    const text = document.getElementById('urlInput').value;
+    if (!text) { showToast('Enter text first'); return; }
+    document.getElementById('urlOutput').textContent = decodeURIComponent(text);
+    showToast('Decoded!');
+  } catch(e) {
+    document.getElementById('urlOutput').textContent = 'Error: Invalid encoded string';
+  }
+}
+
+// ===== 17. COLOR CODE PICKER =====
+function renderColorPicker(el) {
+  el.innerHTML = `
+    <div class="form-group">
+      <label>Pick a color</label>
+      <input type="color" id="cpInput" value="#10b981" style="width:100%;height:60px;border:2px solid var(--gray-200);border-radius:10px;cursor:pointer;padding:4px" oninput="updateColor()">
+    </div>
+    <div class="color-display" id="cpDisplay" style="background:#10b981"></div>
+    <div class="color-values" id="cpValues">
+      <div class="color-value-box" onclick="copyToClipboard(this.querySelector('.value').textContent)">
+        <div class="label">HEX</div>
+        <div class="value" id="cpHex">#10b981</div>
+      </div>
+      <div class="color-value-box" onclick="copyToClipboard(this.querySelector('.value').textContent)">
+        <div class="label">RGB</div>
+        <div class="value" id="cpRgb">rgb(16, 185, 129)</div>
+      </div>
+      <div class="color-value-box" onclick="copyToClipboard(this.querySelector('.value').textContent)">
+        <div class="label">HSL</div>
+        <div class="value" id="cpHsl">hsl(161, 84%, 39%)</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-400);margin-top:12px">Click any value to copy</p>
+  `;
+}
+function updateColor() {
+  const hex = document.getElementById('cpInput').value;
+  document.getElementById('cpDisplay').style.background = hex;
+  document.getElementById('cpHex').textContent = hex.toUpperCase();
+  // Parse hex to RGB
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  document.getElementById('cpRgb').textContent = `rgb(${r}, ${g}, ${b})`;
+  // RGB to HSL
+  const rr = r / 255, gg = g / 255, bb = b / 255;
+  const max = Math.max(rr, gg, bb), min = Math.min(rr, gg, bb);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch(max) {
+      case rr: h = ((gg - bb) / d + (gg < bb ? 6 : 0)) / 6; break;
+      case gg: h = ((bb - rr) / d + 2) / 6; break;
+      case bb: h = ((rr - gg) / d + 4) / 6; break;
+    }
+  }
+  document.getElementById('cpHsl').textContent = `hsl(${Math.round(h*360)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)`;
+}
+</script>
+
+</body>
+</html>

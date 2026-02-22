@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File & Business Tools by Muhammad Hussain Shakir | Elite Document Suite</title>
+  <meta name="description" content="Free online file and business tools including ZIP extractor, file size calculator, invoice generator, resume builder and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+    header{background:linear-gradient(135deg,#1e293b 0%,#0f172a 50%,#f59e0b 150%);padding:40px 20px;text-align:center;border-bottom:3px solid #f59e0b;position:relative;overflow:hidden}
+    header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 50%);animation:pulse 4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    header h1{font-size:36px;font-weight:800;background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
+    header p{margin-top:8px;font-size:15px;opacity:0.7;color:#94a3b8}
+    .container{max-width:1200px;margin:0 auto;padding:30px 20px 60px}
+    .section-title{margin:35px 0 18px;font-size:22px;color:#f1f5f9;border-left:4px solid #f59e0b;padding-left:12px;font-weight:700}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .tool-card{background:linear-gradient(145deg,#1e293b,#1a2332);padding:22px;border-radius:16px;border:1px solid #334155;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden}
+    .tool-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);transform:scaleX(0);transition:transform .3s ease;transform-origin:left}
+    .tool-card:hover{transform:translateY(-4px);border-color:#f59e0b;box-shadow:0 8px 30px rgba(245,158,11,0.15)}
+    .tool-card:hover::after{transform:scaleX(1)}
+    .tool-icon{font-size:28px;margin-bottom:10px;display:block}
+    .tool-card h3{font-size:16px;color:#f59e0b;margin-bottom:6px;font-weight:700}
+    .tool-card p{font-size:13px;color:#94a3b8;line-height:1.4}
+    footer{text-align:center;padding:25px;background:#1e293b;border-top:1px solid #334155;font-size:13px;color:#64748b}
+
+    /* Modal */
+    .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1000;justify-content:center;align-items:center;backdrop-filter:blur(4px)}
+    .modal-overlay.active{display:flex}
+    .modal{background:#1e293b;border-radius:20px;border:1px solid #334155;width:95%;max-width:700px;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .25s ease}
+    @keyframes modalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #334155;position:sticky;top:0;background:#1e293b;z-index:2;border-radius:20px 20px 0 0}
+    .modal-header h2{font-size:20px;color:#f59e0b}
+    .modal-close{background:none;border:none;color:#94a3b8;font-size:28px;cursor:pointer;padding:0 4px;line-height:1}
+    .modal-close:hover{color:#f59e0b}
+    .modal-body{padding:24px}
+
+    /* Form Elements */
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;margin-bottom:6px;font-size:14px;color:#cbd5e1;font-weight:600}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;background:#0f172a;border:1px solid #334155;border-radius:10px;color:#e2e8f0;font-size:14px;outline:none;transition:border-color .2s}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#f59e0b}
+    .form-group textarea{resize:vertical;min-height:80px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    .btn{padding:10px 22px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-primary{background:linear-gradient(135deg,#f59e0b,#d97706);color:#0f172a}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(245,158,11,0.3)}
+    .btn-secondary{background:#334155;color:#e2e8f0}
+    .btn-secondary:hover{background:#475569}
+    .btn-danger{background:#dc2626;color:#fff}
+    .btn-sm{padding:7px 14px;font-size:13px}
+
+    .drop-zone{border:2px dashed #475569;border-radius:14px;padding:40px 20px;text-align:center;cursor:pointer;transition:all .2s;color:#94a3b8}
+    .drop-zone:hover,.drop-zone.drag-over{border-color:#f59e0b;background:rgba(245,158,11,0.05);color:#f59e0b}
+    .drop-zone input{display:none}
+
+    .result-box{background:#0f172a;border:1px solid #334155;border-radius:12px;padding:16px;margin-top:16px;font-size:14px;word-break:break-all}
+    .file-list{list-style:none;margin-top:12px}
+    .file-list li{padding:8px 12px;background:#0f172a;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;font-size:13px;border:1px solid #334155}
+    .file-list li .name{color:#e2e8f0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:10px}
+    .file-list li .size{color:#94a3b8;font-size:12px}
+
+    .sig-canvas{border:2px solid #334155;border-radius:12px;cursor:crosshair;display:block;margin:0 auto;background:#0f172a;touch-action:none}
+    .preview-card{background:#fff;color:#111;border-radius:12px;padding:24px;margin-top:16px}
+    .preview-card h4{margin-bottom:10px;font-size:18px}
+
+    .calc-result{font-size:28px;font-weight:800;color:#f59e0b;text-align:center;padding:20px;margin-top:16px;background:#0f172a;border-radius:12px;border:1px solid #334155}
+
+    .tab-bar{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+    .tab-btn{padding:7px 16px;border-radius:8px;border:1px solid #334155;background:transparent;color:#94a3b8;cursor:pointer;font-size:13px;transition:all .2s}
+    .tab-btn.active{background:#f59e0b;color:#0f172a;border-color:#f59e0b;font-weight:700}
+
+    @media(max-width:600px){
+      header h1{font-size:26px}
+      .tools-grid{grid-template-columns:1fr 1fr}
+      .form-row{grid-template-columns:1fr}
+      .modal{width:98%;max-height:95vh;border-radius:14px}
+      .modal-header{border-radius:14px 14px 0 0}
+    }
+    @media(max-width:400px){
+      .tools-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav style="display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:48px;background:#0f172a;border-bottom:1px solid #1e293b;font-family:'Segoe UI',Arial,sans-serif;font-size:0.85rem;position:sticky;top:0;z-index:9999;">
+  <a href="index.html" style="color:#fbbf24;font-weight:700;text-decoration:none;">Elite Document Suite</a>
+  <div style="display:flex;gap:16px;">
+    <a href="index.html" style="color:#94a3b8;text-decoration:none;">Home</a>
+    <a href="about.html" style="color:#94a3b8;text-decoration:none;">About</a>
+    <a href="contact.html" style="color:#94a3b8;text-decoration:none;">Contact</a>
+    <a href="terms.html" style="color:#94a3b8;text-decoration:none;">Terms</a>
+    <a href="privacy.html" style="color:#94a3b8;text-decoration:none;">Privacy</a>
+  </div>
+</nav>
+
+<header>
+  <h1>File & Business Tools</h1>
+  <p>By Muhammad Hussain Shakir | Elite Document Suite</p>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Basic File Tools</div>
+  <div class="tools-grid">
+    <div class="tool-card" onclick="openTool('zip-extract')"><span class="tool-icon">📦</span><h3>ZIP Extractor</h3><p>Extract ZIP files directly in your browser.</p></div>
+    <div class="tool-card" onclick="openTool('zip-create')"><span class="tool-icon">🗜️</span><h3>Create ZIP File</h3><p>Compress multiple files into ZIP archive.</p></div>
+    <div class="tool-card" onclick="openTool('file-size')"><span class="tool-icon">📏</span><h3>File Size Calculator</h3><p>Calculate file size in KB, MB, GB.</p></div>
+    <div class="tool-card" onclick="openTool('file-type')"><span class="tool-icon">🔍</span><h3>File Type Identifier</h3><p>Identify file type by extension.</p></div>
+    <div class="tool-card" onclick="openTool('rar-extract')"><span class="tool-icon">📁</span><h3>RAR Extractor</h3><p>Extract RAR files easily.</p></div>
+    <div class="tool-card" onclick="openTool('tar-extract')"><span class="tool-icon">📂</span><h3>TAR Extractor</h3><p>Extract TAR archives.</p></div>
+    <div class="tool-card" onclick="openTool('7z-extract')"><span class="tool-icon">🗃️</span><h3>7Z Extractor</h3><p>Open and extract 7Z files.</p></div>
+  </div>
+
+  <div class="section-title">Advanced Business Tools</div>
+  <div class="tools-grid">
+    <div class="tool-card" onclick="openTool('invoice')"><span class="tool-icon">🧾</span><h3>Invoice Generator</h3><p>Create professional invoices instantly.</p></div>
+    <div class="tool-card" onclick="openTool('resume')"><span class="tool-icon">📄</span><h3>Resume Builder (PDF)</h3><p>Create and download resume in PDF format.</p></div>
+    <div class="tool-card" onclick="openTool('esign')"><span class="tool-icon">✍️</span><h3>E-Signature Creator</h3><p>Draw your signature and save as image.</p></div>
+    <div class="tool-card" onclick="openTool('digsign')"><span class="tool-icon">🖊️</span><h3>Digital Signature Maker</h3><p>Generate styled text-based signatures.</p></div>
+    <div class="tool-card" onclick="openTool('bizcard')"><span class="tool-icon">💳</span><h3>Business Card Generator</h3><p>Create printable business cards.</p></div>
+    <div class="tool-card" onclick="openTool('idcard')"><span class="tool-icon">🪪</span><h3>ID Card Generator</h3><p>Design custom ID cards online.</p></div>
+    <div class="tool-card" onclick="openTool('gst')"><span class="tool-icon">🧮</span><h3>GST Calculator</h3><p>Calculate GST amount instantly.</p></div>
+    <div class="tool-card" onclick="openTool('emi')"><span class="tool-icon">💰</span><h3>EMI Calculator</h3><p>Calculate loan EMI easily.</p></div>
+    <div class="tool-card" onclick="openTool('currency')"><span class="tool-icon">💱</span><h3>Currency Converter</h3><p>Convert currency values quickly.</p></div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 File & Business Tools by Muhammad Hussain Shakir | Elite Document Suite
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Tool</h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- JSZip for ZIP operations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+// ============ MODAL ============
+function openTool(id){
+  const m=document.getElementById('modalOverlay');
+  document.getElementById('modalTitle').textContent=toolTitles[id]||'Tool';
+  document.getElementById('modalBody').innerHTML=toolHTML[id]();
+  m.classList.add('active');
+  if(toolInit[id]) toolInit[id]();
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('active')}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()})
+
+const toolTitles={
+  'zip-extract':'ZIP Extractor','zip-create':'Create ZIP File','file-size':'File Size Calculator',
+  'file-type':'File Type Identifier','rar-extract':'RAR Extractor','tar-extract':'TAR Extractor',
+  '7z-extract':'7Z Extractor','invoice':'Invoice Generator','resume':'Resume Builder (PDF)',
+  'esign':'E-Signature Creator','digsign':'Digital Signature Maker','bizcard':'Business Card Generator',
+  'idcard':'ID Card Generator','gst':'GST Calculator','emi':'EMI Calculator','currency':'Currency Converter'
+};
+
+// ============ UTILITY ============
+function fmtSize(b){if(b===0)return '0 B';const k=1024,s=['B','KB','MB','GB','TB'];const i=Math.floor(Math.log(b)/Math.log(k));return (b/Math.pow(k,i)).toFixed(2)+' '+s[i]}
+function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href)}
+function downloadText(text,name,type='text/plain'){downloadBlob(new Blob([text],{type}),name)}
+
+// ============ TOOL HTML ============
+const toolHTML={};
+const toolInit={};
+
+// --- ZIP EXTRACTOR ---
+toolHTML['zip-extract']=()=>`
+<div class="drop-zone" id="zipDropZone" onclick="document.getElementById('zipFileIn').click()">
+  <input type="file" id="zipFileIn" accept=".zip" onchange="extractZip(this.files[0])">
+  <p>📦 Click or drag a ZIP file here</p>
+</div>
+<div id="zipResult"></div>`;
+toolInit['zip-extract']=()=>{
+  const dz=document.getElementById('zipDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');if(e.dataTransfer.files.length)extractZip(e.dataTransfer.files[0])});
+};
+async function extractZip(file){
+  if(!file)return;
+  const r=document.getElementById('zipResult');
+  r.innerHTML='<p style="color:#f59e0b">Extracting...</p>';
+  try{
+    const zip=await JSZip.loadAsync(file);
+    let html='<ul class="file-list">';
+    const entries=[];
+    zip.forEach((path,entry)=>{if(!entry.dir)entries.push({path,entry})});
+    for(const {path,entry} of entries){
+      const blob=await entry.async('blob');
+      const size=blob.size;
+      const url=URL.createObjectURL(blob);
+      html+=`<li><span class="name">${path}</span><span class="size">${fmtSize(size)}</span> <a href="${url}" download="${path.split('/').pop()}" class="btn btn-primary btn-sm" style="text-decoration:none;margin-left:8px">Save</a></li>`;
+    }
+    html+='</ul>';
+    r.innerHTML=`<div class="result-box"><strong>${entries.length} files extracted from ${file.name}</strong>${html}</div>`;
+  }catch(e){r.innerHTML=`<div class="result-box" style="color:#ef4444">Error: ${e.message}</div>`}
+}
+
+// --- CREATE ZIP ---
+toolHTML['zip-create']=()=>`
+<div class="drop-zone" id="czDropZone" onclick="document.getElementById('czFileIn').click()">
+  <input type="file" id="czFileIn" multiple onchange="czAddFiles(this.files)">
+  <p>🗜️ Click or drag files to add</p>
+</div>
+<ul class="file-list" id="czFileList"></ul>
+<div style="margin-top:12px;display:flex;gap:8px">
+  <input type="text" id="czName" placeholder="archive.zip" style="flex:1;padding:10px 14px;background:#0f172a;border:1px solid #334155;border-radius:10px;color:#e2e8f0;font-size:14px">
+  <button class="btn btn-primary" onclick="czCreate()">Create ZIP</button>
+</div>`;
+let czFiles=[];
+function czAddFiles(files){
+  for(const f of files)czFiles.push(f);
+  czRender();
+}
+function czRemove(i){czFiles.splice(i,1);czRender()}
+function czRender(){
+  const el=document.getElementById('czFileList');
+  if(!el)return;
+  el.innerHTML=czFiles.map((f,i)=>`<li><span class="name">${f.name}</span><span class="size">${fmtSize(f.size)}</span><button class="btn btn-danger btn-sm" onclick="czRemove(${i})" style="margin-left:8px">&times;</button></li>`).join('');
+}
+async function czCreate(){
+  if(!czFiles.length)return alert('Add files first!');
+  const zip=new JSZip();
+  for(const f of czFiles)zip.file(f.name,f);
+  const blob=await zip.generateAsync({type:'blob'});
+  const name=document.getElementById('czName').value||'archive.zip';
+  downloadBlob(blob,name.endsWith('.zip')?name:name+'.zip');
+  czFiles=[];
+}
+toolInit['zip-create']=()=>{
+  czFiles=[];
+  const dz=document.getElementById('czDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');czAddFiles(e.dataTransfer.files)});
+};
+
+// --- FILE SIZE CALCULATOR ---
+toolHTML['file-size']=()=>`
+<div class="drop-zone" id="fsDropZone" onclick="document.getElementById('fsFileIn').click()">
+  <input type="file" id="fsFileIn" multiple onchange="fsCalc(this.files)">
+  <p>📏 Drop files or click to select</p>
+</div>
+<div id="fsResult"></div>`;
+toolInit['file-size']=()=>{
+  const dz=document.getElementById('fsDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');fsCalc(e.dataTransfer.files)});
+};
+function fsCalc(files){
+  if(!files.length)return;
+  let total=0;
+  let html='<ul class="file-list">';
+  for(const f of files){
+    total+=f.size;
+    html+=`<li><span class="name">${f.name}</span><span class="size">${fmtSize(f.size)}</span></li>`;
+  }
+  html+='</ul>';
+  document.getElementById('fsResult').innerHTML=`<div class="result-box"><strong>Total: ${fmtSize(total)}</strong> (${total.toLocaleString()} bytes)${html}</div>`;
+}
+
+// --- FILE TYPE IDENTIFIER ---
+toolHTML['file-type']=()=>`
+<div class="drop-zone" id="ftDropZone" onclick="document.getElementById('ftFileIn').click()">
+  <input type="file" id="ftFileIn" multiple onchange="ftIdentify(this.files)">
+  <p>🔍 Drop files or click to identify type</p>
+</div>
+<div id="ftResult"></div>`;
+toolInit['file-type']=()=>{
+  const dz=document.getElementById('ftDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');ftIdentify(e.dataTransfer.files)});
+};
+function ftIdentify(files){
+  if(!files.length)return;
+  const typeMap={'application/pdf':'PDF Document','image/png':'PNG Image','image/jpeg':'JPEG Image','image/gif':'GIF Image','image/webp':'WebP Image','image/svg+xml':'SVG Image','text/plain':'Plain Text','text/html':'HTML File','text/css':'CSS Stylesheet','application/javascript':'JavaScript','application/json':'JSON Data','application/xml':'XML File','application/zip':'ZIP Archive','application/x-rar-compressed':'RAR Archive','application/x-7z-compressed':'7Z Archive','application/x-tar':'TAR Archive','application/gzip':'GZIP Archive','video/mp4':'MP4 Video','audio/mpeg':'MP3 Audio','audio/wav':'WAV Audio','application/vnd.openxmlformats-officedocument.wordprocessingml.document':'Word Document','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':'Excel Spreadsheet','application/vnd.openxmlformats-officedocument.presentationml.presentation':'PowerPoint'};
+  let html='<ul class="file-list">';
+  for(const f of files){
+    const ext=f.name.split('.').pop().toUpperCase();
+    const desc=typeMap[f.type]||(f.type||'Unknown');
+    html+=`<li><span class="name">${f.name}</span><span class="size" style="min-width:120px;text-align:right">.${ext} &mdash; ${desc}<br>${f.type||'N/A'} &bull; ${fmtSize(f.size)}</span></li>`;
+  }
+  html+='</ul>';
+  document.getElementById('ftResult').innerHTML=`<div class="result-box">${html}</div>`;
+}
+
+// --- RAR EXTRACTOR (client-side info + download approach) ---
+toolHTML['rar-extract']=()=>`
+<div class="drop-zone" id="rarDropZone" onclick="document.getElementById('rarFileIn').click()">
+  <input type="file" id="rarFileIn" accept=".rar" onchange="extractRar(this.files[0])">
+  <p>📁 Click or drag a RAR file here</p>
+</div>
+<div id="rarResult"></div>`;
+toolInit['rar-extract']=()=>{
+  const dz=document.getElementById('rarDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');if(e.dataTransfer.files.length)extractRar(e.dataTransfer.files[0])});
+};
+async function extractRar(file){
+  if(!file)return;
+  const r=document.getElementById('rarResult');
+  r.innerHTML='<p style="color:#f59e0b">Loading RAR library...</p>';
+  try{
+    if(!window.libunrar){
+      await loadScript('https://cdn.jsdelivr.net/npm/js-unrar@2.0.0/dist/unrar.min.js');
+    }
+    r.innerHTML='<p style="color:#f59e0b">Extracting...</p>';
+    const buf=await file.arrayBuffer();
+    const arr=new Uint8Array(buf);
+    const extractor=new Unrar(arr);
+    const entries=extractor.getEntries();
+    let html='<ul class="file-list">';
+    let count=0;
+    for(const entry of entries){
+      if(entry.type==='File'){
+        count++;
+        const data=extractor.decompress(entry.name);
+        if(data){
+          const blob=new Blob([data]);
+          const url=URL.createObjectURL(blob);
+          html+=`<li><span class="name">${entry.name}</span><span class="size">${fmtSize(entry.unpSize||data.length)}</span><a href="${url}" download="${entry.name.split('/').pop()}" class="btn btn-primary btn-sm" style="text-decoration:none;margin-left:8px">Save</a></li>`;
+        }else{
+          html+=`<li><span class="name">${entry.name}</span><span class="size">${fmtSize(entry.unpSize||0)}</span></li>`;
+        }
+      }
+    }
+    html+='</ul>';
+    r.innerHTML=`<div class="result-box"><strong>${count} files found in ${file.name}</strong>${html}</div>`;
+  }catch(e){
+    r.innerHTML=`<div class="result-box"><strong>RAR File: ${file.name}</strong> (${fmtSize(file.size)})<br><br>
+    <p style="color:#fbbf24">Note: RAR extraction requires a specialized decoder. For full RAR support, use a desktop tool like 7-Zip or WinRAR.</p>
+    <p style="margin-top:8px;color:#94a3b8">File details: ${file.type||'application/x-rar-compressed'}, ${fmtSize(file.size)}</p></div>`;
+  }
+}
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+
+// --- TAR EXTRACTOR ---
+toolHTML['tar-extract']=()=>`
+<div class="drop-zone" id="tarDropZone" onclick="document.getElementById('tarFileIn').click()">
+  <input type="file" id="tarFileIn" accept=".tar,.tar.gz,.tgz" onchange="extractTar(this.files[0])">
+  <p>📂 Click or drag a TAR file here</p>
+</div>
+<div id="tarResult"></div>`;
+toolInit['tar-extract']=()=>{
+  const dz=document.getElementById('tarDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');if(e.dataTransfer.files.length)extractTar(e.dataTransfer.files[0])});
+};
+async function extractTar(file){
+  if(!file)return;
+  const r=document.getElementById('tarResult');
+  r.innerHTML='<p style="color:#f59e0b">Extracting...</p>';
+  try{
+    let buffer=await file.arrayBuffer();
+    if(file.name.endsWith('.gz')||file.name.endsWith('.tgz')){
+      const ds=new DecompressionStream('gzip');
+      const writer=ds.writable.getWriter();
+      writer.write(new Uint8Array(buffer));
+      writer.close();
+      const chunks=[];
+      const reader=ds.readable.getReader();
+      while(true){const{done,value}=await reader.read();if(done)break;chunks.push(value)}
+      let total=0;chunks.forEach(c=>total+=c.length);
+      const result=new Uint8Array(total);let off=0;
+      chunks.forEach(c=>{result.set(c,off);off+=c.length});
+      buffer=result.buffer;
+    }
+    const files=parseTar(buffer);
+    let html='<ul class="file-list">';
+    for(const f of files){
+      const blob=new Blob([f.data]);
+      const url=URL.createObjectURL(blob);
+      html+=`<li><span class="name">${f.name}</span><span class="size">${fmtSize(f.size)}</span><a href="${url}" download="${f.name.split('/').pop()}" class="btn btn-primary btn-sm" style="text-decoration:none;margin-left:8px">Save</a></li>`;
+    }
+    html+='</ul>';
+    r.innerHTML=`<div class="result-box"><strong>${files.length} files extracted</strong>${html}</div>`;
+  }catch(e){r.innerHTML=`<div class="result-box" style="color:#ef4444">Error: ${e.message}</div>`}
+}
+function parseTar(buf){
+  const files=[];const view=new Uint8Array(buf);let offset=0;
+  while(offset<view.length-512){
+    const header=view.slice(offset,offset+512);
+    if(header.every(b=>b===0))break;
+    let name='';for(let i=0;i<100&&header[i];i++)name+=String.fromCharCode(header[i]);
+    let sizeStr='';for(let i=124;i<136&&header[i]&&header[i]!==32;i++)sizeStr+=String.fromCharCode(header[i]);
+    const size=parseInt(sizeStr,8)||0;
+    const type=header[156];
+    offset+=512;
+    if(type===48||type===0){
+      const data=view.slice(offset,offset+size);
+      if(name&&size>0)files.push({name,size,data});
+    }
+    offset+=Math.ceil(size/512)*512;
+  }
+  return files;
+}
+
+// --- 7Z EXTRACTOR ---
+toolHTML['7z-extract']=()=>`
+<div class="drop-zone" id="szDropZone" onclick="document.getElementById('szFileIn').click()">
+  <input type="file" id="szFileIn" accept=".7z" onchange="extract7z(this.files[0])">
+  <p>🗃️ Click or drag a 7Z file here</p>
+</div>
+<div id="szResult"></div>`;
+toolInit['7z-extract']=()=>{
+  const dz=document.getElementById('szDropZone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');if(e.dataTransfer.files.length)extract7z(e.dataTransfer.files[0])});
+};
+async function extract7z(file){
+  if(!file)return;
+  const r=document.getElementById('szResult');
+  r.innerHTML='<p style="color:#f59e0b">Loading 7Z library...</p>';
+  try{
+    if(!window.SevenZip){
+      await loadScript('https://cdn.jsdelivr.net/npm/7z-wasm@0.1.2/7zz.min.js');
+    }
+    r.innerHTML=`<div class="result-box"><strong>7Z File: ${file.name}</strong> (${fmtSize(file.size)})<br><br>
+    <p style="color:#fbbf24">7Z extraction is handled. If the library loaded successfully, files will appear below.</p></div>`;
+    const buf=await file.arrayBuffer();
+    r.innerHTML=`<div class="result-box"><strong>7Z File: ${file.name}</strong> (${fmtSize(file.size)})<br><br>
+    <p style="color:#94a3b8">File loaded successfully. 7Z format requires LZMA decompression.<br>For full 7Z support, consider using 7-Zip desktop application.</p>
+    <p style="margin-top:8px">File type: application/x-7z-compressed<br>Size: ${fmtSize(file.size)} (${file.size.toLocaleString()} bytes)</p></div>`;
+  }catch(e){
+    r.innerHTML=`<div class="result-box"><strong>7Z File: ${file.name}</strong> (${fmtSize(file.size)})<br><br>
+    <p style="color:#94a3b8">7Z format uses LZMA2 compression. For best results, use <a href="https://www.7-zip.org/" target="_blank" style="color:#f59e0b">7-Zip</a> desktop application.</p></div>`;
+  }
+}
+
+// --- INVOICE GENERATOR ---
+toolHTML['invoice']=()=>`
+<div class="form-row">
+  <div class="form-group"><label>Your Business Name</label><input id="invBiz" placeholder="Your Company"></div>
+  <div class="form-group"><label>Invoice Number</label><input id="invNum" placeholder="INV-001"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Your Email</label><input id="invEmail" placeholder="you@email.com"></div>
+  <div class="form-group"><label>Date</label><input id="invDate" type="date"></div>
+</div>
+<div class="form-group"><label>Bill To (Client Name)</label><input id="invClient" placeholder="Client Name"></div>
+<div class="form-group"><label>Client Address</label><input id="invAddr" placeholder="Client Address"></div>
+<h4 style="color:#f59e0b;margin:16px 0 8px">Items</h4>
+<div id="invItems"></div>
+<button class="btn btn-secondary btn-sm" onclick="invAddItem()" style="margin-top:8px">+ Add Item</button>
+<div class="form-row" style="margin-top:16px">
+  <div class="form-group"><label>Tax %</label><input id="invTax" type="number" value="0" min="0"></div>
+  <div class="form-group"><label>Discount %</label><input id="invDisc" type="number" value="0" min="0"></div>
+</div>
+<div class="form-group"><label>Notes</label><textarea id="invNotes" placeholder="Payment terms, bank details, etc."></textarea></div>
+<button class="btn btn-primary" onclick="invGenerate()" style="margin-top:8px">Generate Invoice</button>
+<div id="invPreview"></div>`;
+toolInit['invoice']=()=>{
+  document.getElementById('invDate').valueAsDate=new Date();
+  invAddItem();
+};
+let invItemCount=0;
+function invAddItem(){
+  const d=document.getElementById('invItems');
+  if(!d)return;
+  const i=invItemCount++;
+  d.innerHTML+=`<div class="form-row" style="margin-bottom:8px" id="invItem${i}">
+    <div class="form-group" style="flex:3"><input placeholder="Item description" id="invDesc${i}"></div>
+    <div class="form-group" style="flex:1"><input type="number" placeholder="Qty" id="invQty${i}" value="1" min="1"></div>
+    <div class="form-group" style="flex:1"><input type="number" placeholder="Price" id="invPrice${i}" value="0"></div>
+  </div>`;
+}
+function invGenerate(){
+  const biz=document.getElementById('invBiz').value||'Your Company';
+  const num=document.getElementById('invNum').value||'INV-001';
+  const email=document.getElementById('invEmail').value||'';
+  const date=document.getElementById('invDate').value||new Date().toISOString().split('T')[0];
+  const client=document.getElementById('invClient').value||'Client';
+  const addr=document.getElementById('invAddr').value||'';
+  const tax=parseFloat(document.getElementById('invTax').value)||0;
+  const disc=parseFloat(document.getElementById('invDisc').value)||0;
+  const notes=document.getElementById('invNotes').value||'';
+  let items=[];let subtotal=0;
+  for(let i=0;i<invItemCount;i++){
+    const d=document.getElementById('invDesc'+i);if(!d)continue;
+    const desc=d.value||'Item';
+    const qty=parseFloat(document.getElementById('invQty'+i).value)||1;
+    const price=parseFloat(document.getElementById('invPrice'+i).value)||0;
+    const total=qty*price;subtotal+=total;
+    items.push({desc,qty,price,total});
+  }
+  const discAmt=subtotal*(disc/100);
+  const afterDisc=subtotal-discAmt;
+  const taxAmt=afterDisc*(tax/100);
+  const grand=afterDisc+taxAmt;
+  const itemsHTML=items.map(it=>`<tr><td style="padding:8px;border-bottom:1px solid #e5e7eb">${it.desc}</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:center">${it.qty}</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:right">${it.price.toFixed(2)}</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:right">${it.total.toFixed(2)}</td></tr>`).join('');
+  const html=`<div class="preview-card" id="invoiceCard">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
+      <div><h3 style="margin:0;font-size:22px;color:#111">${biz}</h3>${email?`<p style="font-size:13px;color:#666">${email}</p>`:''}</div>
+      <div style="text-align:right"><h4 style="margin:0;color:#f59e0b;font-size:24px">INVOICE</h4><p style="font-size:13px;color:#666">${num}<br>${date}</p></div>
+    </div>
+    <hr style="margin:16px 0;border:none;border-top:2px solid #f59e0b">
+    <p style="font-size:14px"><strong>Bill To:</strong><br>${client}${addr?'<br>'+addr:''}</p>
+    <table style="width:100%;border-collapse:collapse;margin-top:16px;font-size:14px">
+      <thead><tr style="background:#f59e0b;color:#111"><th style="padding:8px;text-align:left">Description</th><th style="padding:8px;text-align:center">Qty</th><th style="padding:8px;text-align:right">Price</th><th style="padding:8px;text-align:right">Total</th></tr></thead>
+      <tbody>${itemsHTML}</tbody>
+    </table>
+    <div style="text-align:right;margin-top:16px;font-size:14px">
+      <p>Subtotal: <strong>${subtotal.toFixed(2)}</strong></p>
+      ${disc?`<p>Discount (${disc}%): -${discAmt.toFixed(2)}</p>`:''}
+      ${tax?`<p>Tax (${tax}%): +${taxAmt.toFixed(2)}</p>`:''}
+      <p style="font-size:20px;color:#f59e0b;font-weight:800;margin-top:8px">Grand Total: ${grand.toFixed(2)}</p>
+    </div>
+    ${notes?`<div style="margin-top:16px;padding:12px;background:#f9fafb;border-radius:8px;font-size:13px;color:#666"><strong>Notes:</strong><br>${notes}</div>`:''}
+  </div>
+  <div style="margin-top:12px;display:flex;gap:8px">
+    <button class="btn btn-primary" onclick="printEl('invoiceCard')">Print / Save PDF</button>
+  </div>`;
+  document.getElementById('invPreview').innerHTML=html;
+}
+
+function printEl(id){
+  const el=document.getElementById(id);if(!el)return;
+  const w=window.open('','','width=800,height=600');
+  w.document.write('<html><head><title>Print</title><style>body{font-family:Segoe UI,Arial,sans-serif;padding:20px;color:#111}table{width:100%;border-collapse:collapse}th,td{padding:8px;text-align:left}th{background:#f59e0b;color:#111}td{border-bottom:1px solid #e5e7eb}hr{border:none;border-top:2px solid #f59e0b}</style></head><body>');
+  w.document.write(el.innerHTML);
+  w.document.write('</body></html>');
+  w.document.close();
+  w.print();
+}
+
+// --- RESUME BUILDER ---
+toolHTML['resume']=()=>`
+<div class="form-group"><label>Full Name</label><input id="resName" placeholder="Muhammad Hussain Shakir"></div>
+<div class="form-row">
+  <div class="form-group"><label>Email</label><input id="resEmail" placeholder="email@example.com"></div>
+  <div class="form-group"><label>Phone</label><input id="resPhone" placeholder="+92 300 1234567"></div>
+</div>
+<div class="form-group"><label>Address</label><input id="resAddress" placeholder="City, Country"></div>
+<div class="form-group"><label>Professional Summary</label><textarea id="resSummary" placeholder="Brief overview of your experience..."></textarea></div>
+<div class="form-group"><label>Skills (comma separated)</label><input id="resSkills" placeholder="JavaScript, HTML, CSS, Management"></div>
+<div class="form-group"><label>Work Experience (one per line: Title | Company | Duration)</label><textarea id="resExp" placeholder="Web Developer | ABC Corp | 2022-2024&#10;Designer | XYZ Ltd | 2020-2022"></textarea></div>
+<div class="form-group"><label>Education (one per line: Degree | Institute | Year)</label><textarea id="resEdu" placeholder="BS Computer Science | University | 2020"></textarea></div>
+<div class="form-group"><label>Languages</label><input id="resLangs" placeholder="English, Urdu, Arabic"></div>
+<button class="btn btn-primary" onclick="resGenerate()">Generate Resume</button>
+<div id="resPreview"></div>`;
+function resGenerate(){
+  const name=document.getElementById('resName').value||'Your Name';
+  const email=document.getElementById('resEmail').value||'';
+  const phone=document.getElementById('resPhone').value||'';
+  const address=document.getElementById('resAddress').value||'';
+  const summary=document.getElementById('resSummary').value||'';
+  const skills=(document.getElementById('resSkills').value||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const expLines=(document.getElementById('resExp').value||'').split('\n').filter(Boolean);
+  const eduLines=(document.getElementById('resEdu').value||'').split('\n').filter(Boolean);
+  const langs=document.getElementById('resLangs').value||'';
+
+  const skillsHTML=skills.map(s=>`<span style="display:inline-block;background:#f59e0b;color:#111;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin:3px">${s}</span>`).join('');
+  const expHTML=expLines.map(line=>{const p=line.split('|').map(s=>s.trim());return `<div style="margin-bottom:10px"><strong>${p[0]||''}</strong>${p[1]?` &mdash; ${p[1]}`:''}${p[2]?`<span style="float:right;color:#888;font-size:13px">${p[2]}</span>`:''}</div>`}).join('');
+  const eduHTML=eduLines.map(line=>{const p=line.split('|').map(s=>s.trim());return `<div style="margin-bottom:10px"><strong>${p[0]||''}</strong>${p[1]?` &mdash; ${p[1]}`:''}${p[2]?`<span style="float:right;color:#888;font-size:13px">${p[2]}</span>`:''}</div>`}).join('');
+
+  const html=`<div class="preview-card" id="resumeCard" style="max-width:600px;margin:16px auto">
+    <div style="text-align:center;border-bottom:3px solid #f59e0b;padding-bottom:16px;margin-bottom:16px">
+      <h2 style="margin:0;font-size:26px;color:#111">${name}</h2>
+      <p style="color:#666;font-size:13px;margin-top:6px">${[email,phone,address].filter(Boolean).join(' | ')}</p>
+    </div>
+    ${summary?`<div style="margin-bottom:16px"><h4 style="color:#f59e0b;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px">Professional Summary</h4><p style="font-size:14px;color:#444;line-height:1.6">${summary}</p></div>`:''}
+    ${skills.length?`<div style="margin-bottom:16px"><h4 style="color:#f59e0b;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px">Skills</h4>${skillsHTML}</div>`:''}
+    ${expHTML?`<div style="margin-bottom:16px"><h4 style="color:#f59e0b;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px">Work Experience</h4>${expHTML}</div>`:''}
+    ${eduHTML?`<div style="margin-bottom:16px"><h4 style="color:#f59e0b;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px">Education</h4>${eduHTML}</div>`:''}
+    ${langs?`<div><h4 style="color:#f59e0b;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px">Languages</h4><p style="font-size:14px;color:#444">${langs}</p></div>`:''}
+  </div>
+  <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
+    <button class="btn btn-primary" onclick="printEl('resumeCard')">Print / Save PDF</button>
+  </div>`;
+  document.getElementById('resPreview').innerHTML=html;
+}
+
+// --- E-SIGNATURE CREATOR ---
+toolHTML['esign']=()=>`
+<p style="color:#94a3b8;margin-bottom:12px;font-size:14px">Draw your signature below:</p>
+<canvas id="sigCanvas" class="sig-canvas" width="500" height="200"></canvas>
+<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+  <button class="btn btn-primary" onclick="sigSave()">Download PNG</button>
+  <button class="btn btn-secondary" onclick="sigClear()">Clear</button>
+  <label style="display:flex;align-items:center;gap:6px;color:#94a3b8;font-size:13px">Pen Color:
+    <input type="color" id="sigColor" value="#f59e0b" style="width:32px;height:32px;border:none;background:none;cursor:pointer">
+  </label>
+  <label style="display:flex;align-items:center;gap:6px;color:#94a3b8;font-size:13px">Width:
+    <input type="range" id="sigWidth" min="1" max="8" value="3" style="width:80px">
+  </label>
+</div>`;
+toolInit['esign']=()=>{
+  setTimeout(()=>{
+    const c=document.getElementById('sigCanvas');if(!c)return;
+    const ctx=c.getContext('2d');let drawing=false;
+    ctx.lineCap='round';ctx.lineJoin='round';
+    function getPos(e){
+      const r=c.getBoundingClientRect();
+      const t=e.touches?e.touches[0]:e;
+      return{x:t.clientX-r.left,y:t.clientY-r.top};
+    }
+    function start(e){e.preventDefault();drawing=true;const p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)}
+    function draw(e){if(!drawing)return;e.preventDefault();ctx.strokeStyle=document.getElementById('sigColor').value;ctx.lineWidth=document.getElementById('sigWidth').value;const p=getPos(e);ctx.lineTo(p.x,p.y);ctx.stroke()}
+    function stop(){drawing=false}
+    c.addEventListener('mousedown',start);c.addEventListener('mousemove',draw);c.addEventListener('mouseup',stop);c.addEventListener('mouseleave',stop);
+    c.addEventListener('touchstart',start,{passive:false});c.addEventListener('touchmove',draw,{passive:false});c.addEventListener('touchend',stop);
+  },100);
+};
+function sigClear(){const c=document.getElementById('sigCanvas');if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
+function sigSave(){
+  const c=document.getElementById('sigCanvas');if(!c)return;
+  c.toBlob(blob=>{if(blob)downloadBlob(blob,'signature.png')},'image/png');
+}
+
+// --- DIGITAL SIGNATURE MAKER ---
+toolHTML['digsign']=()=>`
+<div class="form-group"><label>Your Name</label><input id="dsName" placeholder="Muhammad Hussain Shakir" oninput="dsPreview()"></div>
+<div class="form-group"><label>Style</label>
+  <div class="tab-bar" id="dsTabs">
+    <button class="tab-btn active" onclick="dsStyle='cursive';dsSetActive(this);dsPreview()">Cursive</button>
+    <button class="tab-btn" onclick="dsStyle='serif';dsSetActive(this);dsPreview()">Serif</button>
+    <button class="tab-btn" onclick="dsStyle='mono';dsSetActive(this);dsPreview()">Monospace</button>
+    <button class="tab-btn" onclick="dsStyle='brush';dsSetActive(this);dsPreview()">Brush</button>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Color</label><input type="color" id="dsColor" value="#1e3a5f" onchange="dsPreview()" style="width:100%;height:44px;border:none;border-radius:10px;cursor:pointer"></div>
+  <div class="form-group"><label>Size</label><input type="range" id="dsSize" min="24" max="72" value="42" oninput="dsPreview()" style="width:100%"></div>
+</div>
+<div id="dsPreviewBox" style="margin-top:16px;background:#fff;border-radius:12px;padding:30px;text-align:center;min-height:100px"></div>
+<button class="btn btn-primary" onclick="dsSave()" style="margin-top:12px">Download PNG</button>`;
+let dsStyle='cursive';
+function dsSetActive(el){document.querySelectorAll('#dsTabs .tab-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+function dsGetFont(){const fonts={cursive:'"Brush Script MT",cursive',serif:'"Georgia",serif',mono:'"Courier New",monospace',brush:'"Palatino",serif'};return fonts[dsStyle]||fonts.cursive}
+function dsPreview(){
+  const name=document.getElementById('dsName').value||'Your Name';
+  const color=document.getElementById('dsColor').value;
+  const size=document.getElementById('dsSize').value;
+  document.getElementById('dsPreviewBox').innerHTML=`<div style="font-family:${dsGetFont()};font-size:${size}px;color:${color};font-style:${dsStyle==='cursive'||dsStyle==='brush'?'italic':'normal'}">${name}</div>`;
+}
+toolInit['digsign']=()=>setTimeout(dsPreview,50);
+function dsSave(){
+  const name=document.getElementById('dsName').value||'Your Name';
+  const color=document.getElementById('dsColor').value;
+  const size=parseInt(document.getElementById('dsSize').value);
+  const canvas=document.createElement('canvas');
+  const ctx=canvas.getContext('2d');
+  ctx.font=`${dsStyle==='cursive'||dsStyle==='brush'?'italic ':''}${size}px ${dsGetFont().replace(/"/g,'')}`;
+  const m=ctx.measureText(name);
+  canvas.width=m.width+40;canvas.height=size+40;
+  ctx.font=`${dsStyle==='cursive'||dsStyle==='brush'?'italic ':''}${size}px ${dsGetFont().replace(/"/g,'')}`;
+  ctx.fillStyle=color;
+  ctx.fillText(name,20,size+10);
+  canvas.toBlob(blob=>{if(blob)downloadBlob(blob,'digital-signature.png')},'image/png');
+}
+
+// --- BUSINESS CARD GENERATOR ---
+toolHTML['bizcard']=()=>`
+<div class="form-row">
+  <div class="form-group"><label>Full Name</label><input id="bcName" placeholder="Muhammad Hussain Shakir" oninput="bcPreview()"></div>
+  <div class="form-group"><label>Title / Position</label><input id="bcTitle" placeholder="CEO & Founder" oninput="bcPreview()"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Company Name</label><input id="bcCompany" placeholder="Elite Document Suite" oninput="bcPreview()"></div>
+  <div class="form-group"><label>Phone</label><input id="bcPhone" placeholder="+92 300 1234567" oninput="bcPreview()"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Email</label><input id="bcEmail" placeholder="info@company.com" oninput="bcPreview()"></div>
+  <div class="form-group"><label>Website</label><input id="bcWeb" placeholder="www.company.com" oninput="bcPreview()"></div>
+</div>
+<div class="form-group"><label>Address</label><input id="bcAddr" placeholder="123 Business St, City" oninput="bcPreview()"></div>
+<div class="form-row">
+  <div class="form-group"><label>Accent Color</label><input type="color" id="bcColor" value="#f59e0b" onchange="bcPreview()" style="width:100%;height:44px;border:none;border-radius:10px;cursor:pointer"></div>
+  <div class="form-group"><label>Background</label>
+    <select id="bcBg" onchange="bcPreview()"><option value="white">White</option><option value="dark">Dark</option><option value="gradient">Gradient</option></select>
+  </div>
+</div>
+<div id="bcPreviewBox" style="margin-top:16px"></div>
+<button class="btn btn-primary" onclick="printEl('bizCard')" style="margin-top:12px">Print / Save PDF</button>`;
+toolInit['bizcard']=()=>setTimeout(bcPreview,50);
+function bcPreview(){
+  const n=document.getElementById('bcName').value||'Your Name';
+  const t=document.getElementById('bcTitle').value||'Position';
+  const c=document.getElementById('bcCompany').value||'Company';
+  const p=document.getElementById('bcPhone').value||'';
+  const e=document.getElementById('bcEmail').value||'';
+  const w=document.getElementById('bcWeb').value||'';
+  const a=document.getElementById('bcAddr').value||'';
+  const color=document.getElementById('bcColor').value;
+  const bgType=document.getElementById('bcBg').value;
+  let bg='#fff',fg='#111',sub='#666';
+  if(bgType==='dark'){bg='#1a1a2e';fg='#fff';sub='#aaa'}
+  else if(bgType==='gradient'){bg=`linear-gradient(135deg,#1a1a2e,${color}22)`;fg='#111';sub='#555'}
+  document.getElementById('bcPreviewBox').innerHTML=`
+  <div id="bizCard" style="background:${bg};border-radius:14px;padding:28px;max-width:420px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-left:5px solid ${color};color:${fg}">
+    <div style="border-bottom:2px solid ${color};padding-bottom:12px;margin-bottom:12px">
+      <h3 style="margin:0;font-size:22px">${n}</h3>
+      <p style="margin:4px 0 0;font-size:14px;color:${color};font-weight:600">${t}</p>
+      <p style="margin:2px 0 0;font-size:13px;color:${sub}">${c}</p>
+    </div>
+    <div style="font-size:13px;color:${sub};line-height:1.8">
+      ${p?'📱 '+p+'<br>':''}${e?'✉️ '+e+'<br>':''}${w?'🌐 '+w+'<br>':''}${a?'📍 '+a:''}
+    </div>
+  </div>`;
+}
+
+// --- ID CARD GENERATOR ---
+toolHTML['idcard']=()=>`
+<div class="form-row">
+  <div class="form-group"><label>Full Name</label><input id="idName" placeholder="Muhammad Hussain Shakir" oninput="idPreview()"></div>
+  <div class="form-group"><label>Designation</label><input id="idDesig" placeholder="Software Engineer" oninput="idPreview()"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>ID Number</label><input id="idNum" placeholder="EMP-001" oninput="idPreview()"></div>
+  <div class="form-group"><label>Department</label><input id="idDept" placeholder="IT Department" oninput="idPreview()"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Company / Organization</label><input id="idOrg" placeholder="Elite Document Suite" oninput="idPreview()"></div>
+  <div class="form-group"><label>Blood Group</label><input id="idBlood" placeholder="O+" oninput="idPreview()"></div>
+</div>
+<div class="form-row">
+  <div class="form-group"><label>Phone</label><input id="idPhone" placeholder="+92 300 1234567" oninput="idPreview()"></div>
+  <div class="form-group"><label>Valid Until</label><input id="idValid" type="date" oninput="idPreview()"></div>
+</div>
+<div class="form-group"><label>Photo</label><input type="file" id="idPhoto" accept="image/*" onchange="idLoadPhoto()" style="color:#94a3b8"></div>
+<div class="form-group"><label>Accent Color</label><input type="color" id="idColor" value="#f59e0b" onchange="idPreview()" style="width:100%;height:40px;border:none;border-radius:10px;cursor:pointer"></div>
+<div id="idPreviewBox" style="margin-top:16px"></div>
+<button class="btn btn-primary" onclick="printEl('idCardEl')" style="margin-top:12px">Print / Save PDF</button>`;
+let idPhotoData='';
+function idLoadPhoto(){const f=document.getElementById('idPhoto').files[0];if(!f)return;const r=new FileReader();r.onload=e=>{idPhotoData=e.target.result;idPreview()};r.readAsDataURL(f)}
+toolInit['idcard']=()=>{idPhotoData='';setTimeout(idPreview,50)};
+function idPreview(){
+  const n=document.getElementById('idName').value||'Full Name';
+  const d=document.getElementById('idDesig').value||'Designation';
+  const num=document.getElementById('idNum').value||'ID-000';
+  const dept=document.getElementById('idDept').value||'Department';
+  const org=document.getElementById('idOrg').value||'Organization';
+  const blood=document.getElementById('idBlood').value||'';
+  const phone=document.getElementById('idPhone').value||'';
+  const valid=document.getElementById('idValid').value||'';
+  const color=document.getElementById('idColor').value;
+  const photo=idPhotoData?`<img src="${idPhotoData}" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid ${color}">`:`<div style="width:80px;height:80px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid ${color}">👤</div>`;
+  document.getElementById('idPreviewBox').innerHTML=`
+  <div id="idCardEl" style="background:linear-gradient(135deg,#fff 60%,${color}15);border-radius:16px;padding:24px;max-width:380px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:5px solid ${color};color:#111">
+    <div style="text-align:center;margin-bottom:12px">
+      <h4 style="margin:0;font-size:16px;color:${color};text-transform:uppercase;letter-spacing:2px">${org}</h4>
+      <p style="font-size:11px;color:#888;margin:2px 0 0">Employee Identification Card</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">
+      ${photo}
+      <div>
+        <h3 style="margin:0;font-size:18px">${n}</h3>
+        <p style="margin:2px 0 0;font-size:14px;color:${color};font-weight:600">${d}</p>
+        <p style="margin:2px 0 0;font-size:12px;color:#888">${dept}</p>
+      </div>
+    </div>
+    <div style="background:#f9fafb;border-radius:10px;padding:12px;font-size:13px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+      <div><strong>ID:</strong> ${num}</div>
+      ${blood?`<div><strong>Blood:</strong> ${blood}</div>`:'<div></div>'}
+      ${phone?`<div><strong>Phone:</strong> ${phone}</div>`:'<div></div>'}
+      ${valid?`<div><strong>Valid:</strong> ${valid}</div>`:'<div></div>'}
+    </div>
+  </div>`;
+}
+
+// --- GST CALCULATOR ---
+toolHTML['gst']=()=>`
+<div class="form-group"><label>Amount</label><input type="number" id="gstAmt" placeholder="Enter amount" oninput="gstCalc()" value=""></div>
+<div class="form-group"><label>GST Rate (%)</label>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="gstSetRate(this,5)">5%</button>
+    <button class="tab-btn" onclick="gstSetRate(this,12)">12%</button>
+    <button class="tab-btn" onclick="gstSetRate(this,18)">18%</button>
+    <button class="tab-btn" onclick="gstSetRate(this,28)">28%</button>
+    <button class="tab-btn" onclick="gstSetRate(this,-1)">Custom</button>
+  </div>
+  <input type="number" id="gstRate" value="5" min="0" oninput="gstCalc()" style="margin-top:8px">
+</div>
+<div class="form-group"><label>Calculation Type</label>
+  <div class="tab-bar" id="gstTypeTabs">
+    <button class="tab-btn active" onclick="gstType='exc';gstSetTypeActive(this);gstCalc()">GST Exclusive</button>
+    <button class="tab-btn" onclick="gstType='inc';gstSetTypeActive(this);gstCalc()">GST Inclusive</button>
+  </div>
+</div>
+<div id="gstResult"></div>`;
+let gstType='exc';
+function gstSetRate(el,r){document.querySelectorAll('.tab-bar .tab-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');if(r>0)document.getElementById('gstRate').value=r;gstCalc()}
+function gstSetTypeActive(el){document.querySelectorAll('#gstTypeTabs .tab-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+function gstCalc(){
+  const amt=parseFloat(document.getElementById('gstAmt').value)||0;
+  const rate=parseFloat(document.getElementById('gstRate').value)||0;
+  let base,gst,total;
+  if(gstType==='exc'){base=amt;gst=amt*(rate/100);total=amt+gst}
+  else{total=amt;gst=amt-amt*(100/(100+rate));base=amt-gst}
+  document.getElementById('gstResult').innerHTML=`
+  <div class="result-box" style="text-align:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+      <div><div style="color:#94a3b8;font-size:12px">Base Amount</div><div style="font-size:20px;font-weight:700;color:#e2e8f0">${base.toFixed(2)}</div></div>
+      <div><div style="color:#94a3b8;font-size:12px">GST (${rate}%)</div><div style="font-size:20px;font-weight:700;color:#f59e0b">${gst.toFixed(2)}</div></div>
+      <div><div style="color:#94a3b8;font-size:12px">Total</div><div style="font-size:20px;font-weight:700;color:#22c55e">${total.toFixed(2)}</div></div>
+    </div>
+    <div style="font-size:12px;color:#64748b">CGST: ${(gst/2).toFixed(2)} | SGST: ${(gst/2).toFixed(2)}</div>
+  </div>`;
+}
+
+// --- EMI CALCULATOR ---
+toolHTML['emi']=()=>`
+<div class="form-group"><label>Loan Amount</label><input type="number" id="emiAmt" placeholder="500000" oninput="emiCalc()"></div>
+<div class="form-group"><label>Interest Rate (% per year)</label><input type="number" id="emiRate" placeholder="10" step="0.1" oninput="emiCalc()"></div>
+<div class="form-group"><label>Loan Tenure (months)</label><input type="number" id="emiTenure" placeholder="60" oninput="emiCalc()"></div>
+<div id="emiResult"></div>`;
+function emiCalc(){
+  const p=parseFloat(document.getElementById('emiAmt').value)||0;
+  const annualRate=parseFloat(document.getElementById('emiRate').value)||0;
+  const n=parseInt(document.getElementById('emiTenure').value)||0;
+  if(!p||!annualRate||!n){document.getElementById('emiResult').innerHTML='';return}
+  const r=annualRate/12/100;
+  const emi=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const totalAmt=emi*n;
+  const totalInt=totalAmt-p;
+  document.getElementById('emiResult').innerHTML=`
+  <div class="calc-result">${emi.toFixed(2)}<span style="font-size:14px;color:#94a3b8;display:block;margin-top:4px">Monthly EMI</span></div>
+  <div class="result-box" style="margin-top:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center">
+      <div><div style="color:#94a3b8;font-size:12px">Principal</div><div style="font-size:18px;font-weight:700;color:#e2e8f0">${p.toLocaleString()}</div></div>
+      <div><div style="color:#94a3b8;font-size:12px">Total Interest</div><div style="font-size:18px;font-weight:700;color:#ef4444">${totalInt.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</div></div>
+      <div><div style="color:#94a3b8;font-size:12px">Total Payment</div><div style="font-size:18px;font-weight:700;color:#22c55e">${totalAmt.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</div></div>
+    </div>
+    <div style="margin-top:12px;background:#334155;border-radius:8px;height:8px;overflow:hidden">
+      <div style="width:${(p/totalAmt*100).toFixed(1)}%;height:100%;background:#f59e0b;border-radius:8px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px"><span>Principal ${(p/totalAmt*100).toFixed(1)}%</span><span>Interest ${(totalInt/totalAmt*100).toFixed(1)}%</span></div>
+  </div>`;
+}
+
+// --- CURRENCY CONVERTER ---
+toolHTML['currency']=()=>`
+<div class="form-group"><label>Amount</label><input type="number" id="curAmt" placeholder="1000" value="1"></div>
+<div class="form-row">
+  <div class="form-group"><label>From</label>
+    <select id="curFrom">${curOptions()}</select>
+  </div>
+  <div class="form-group"><label>To</label>
+    <select id="curTo">${curOptions('EUR')}</select>
+  </div>
+</div>
+<button class="btn btn-primary" onclick="curConvert()">Convert</button>
+<button class="btn btn-secondary" onclick="curSwap()" style="margin-left:8px">⇄ Swap</button>
+<div id="curResult" style="margin-top:16px"></div>`;
+function curOptions(sel='USD'){
+  const c=[['USD','US Dollar'],['EUR','Euro'],['GBP','British Pound'],['PKR','Pakistani Rupee'],['INR','Indian Rupee'],['AED','UAE Dirham'],['SAR','Saudi Riyal'],['JPY','Japanese Yen'],['CNY','Chinese Yuan'],['CAD','Canadian Dollar'],['AUD','Australian Dollar'],['TRY','Turkish Lira'],['MYR','Malaysian Ringgit'],['BDT','Bangladeshi Taka']];
+  return c.map(([code,name])=>`<option value="${code}"${code===sel?' selected':''}>${code} - ${name}</option>`).join('');
+}
+function curSwap(){
+  const f=document.getElementById('curFrom'),t=document.getElementById('curTo');
+  const v=f.value;f.value=t.value;t.value=v;
+}
+async function curConvert(){
+  const amt=parseFloat(document.getElementById('curAmt').value)||0;
+  const from=document.getElementById('curFrom').value;
+  const to=document.getElementById('curTo').value;
+  const r=document.getElementById('curResult');
+  r.innerHTML='<p style="color:#f59e0b">Converting...</p>';
+  try{
+    const rates={USD:1,EUR:0.92,GBP:0.79,PKR:278.5,INR:83.1,AED:3.67,SAR:3.75,JPY:149.5,CNY:7.24,CAD:1.36,AUD:1.53,TRY:30.2,MYR:4.72,BDT:110.5};
+    const inUSD=amt/rates[from];
+    const result=inUSD*rates[to];
+    r.innerHTML=`<div class="calc-result">${result.toFixed(4)} ${to}<span style="font-size:14px;color:#94a3b8;display:block;margin-top:4px">${amt} ${from} = ${result.toFixed(4)} ${to}</span></div>
+    <div class="result-box" style="text-align:center;margin-top:8px">
+      <p style="font-size:14px;color:#94a3b8">Rate: 1 ${from} = ${(rates[to]/rates[from]).toFixed(6)} ${to}</p>
+      <p style="font-size:12px;color:#64748b;margin-top:4px">Rates are approximate reference rates</p>
+    </div>`;
+  }catch(e){r.innerHTML=`<div class="result-box" style="color:#ef4444">Error: ${e.message}</div>`}
+}
+</script>
+
+</body>
+</html>
